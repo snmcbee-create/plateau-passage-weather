@@ -1,0 +1,38 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Plateau Passage — October Weather Profile
+Copyright (c) 2026 Steve McBee
+
+This work is licensed under the Creative Commons Attribution 4.0 International
+License. To view a copy of this license, visit:
+
+    https://creativecommons.org/licenses/by/4.0/
+
+You are free to:
+
+  Share  — copy and redistribute the material in any medium or format
+  Adapt  — remix, transform, and build upon the material for any purpose,
+           even commercially
+
+Under the following terms:
+
+  Attribution — You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any reasonable
+  manner, but not in any way that suggests the licensor endorses you or your
+  use.
+
+No warranties are given. This work describes historical climate averages and
+is not a weather forecast. It must not be relied upon as the sole basis for
+decisions affecting personal safety in remote or high-elevation terrain.
+
+---
+
+Third-party components:
+
+  Chart.js 4.4.1 — MIT License — https://www.chartjs.org
+  Bundled at vendor/chart.umd.js; full license text at
+  vendor/chart.js-LICENSE.md
+
+  Route distance and elevation-gain figures are attributable to Bikepacking
+  Roots, who created and steward the Plateau Passage route:
+  https://bikepackingroots.org/project/the-plateau-passage/

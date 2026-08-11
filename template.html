@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plateau Passage — October Weather Profile</title>
+<script>__CHARTJS__</script>
+<style>
+  :root{
+    --bg:#0f1216; --panel:#171c22; --panel2:#1e242c; --line:#2a323c;
+    --ink:#e8edf3; --dim:#94a3b3; --faint:#5e6b7a;
+    --hot:#e8663d; --cold:#4a9fe0; --freeze:#7dd3fc; --rain:#8b7fd6;
+    --alpine:#c9a227; --ok:#4ade80;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:28px 22px 70px}
+  h1{font-size:27px;letter-spacing:-.02em;margin:0 0 4px;font-weight:650}
+  .sub{color:var(--dim);font-size:14px;margin:0 0 22px}
+  .sub b{color:var(--ink);font-weight:600}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);
+    font-weight:600;margin:0 0 14px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+  .stat .v{font-size:23px;font-weight:650;letter-spacing:-.02em;line-height:1.15}
+  .stat .k{font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px 16px;margin-bottom:20px}
+  .chartbox{position:relative;height:420px}
+  .chartbox.short{height:270px}
+
+  .toggle{display:flex;gap:6px;margin:0 0 16px}
+  .toggle button{background:var(--panel2);color:var(--dim);border:1px solid var(--line);
+    border-radius:7px;padding:7px 13px;font-size:13px;cursor:pointer;font-family:inherit;
+    transition:.13s}
+  .toggle button:hover{color:var(--ink);border-color:#3c4653}
+  .toggle button.on{background:#2b3644;color:var(--ink);border-color:#4a5768}
+
+  .head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .hint{font-size:12.5px;color:var(--faint)}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--faint);font-weight:600;font-size:11px;text-transform:uppercase;
+    letter-spacing:.06em;padding:0 8px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th.n,td.n{text-align:right}
+  td{padding:9px 8px;border-bottom:1px solid #21272f;vertical-align:top}
+  tr:hover td{background:#1b2129}
+  .lm{font-weight:600}
+  .nt{color:var(--faint);font-size:12px;display:block;margin-top:2px;max-width:390px}
+  .tag{display:inline-block;padding:1.5px 7px;border-radius:20px;font-size:11px;font-weight:600}
+  .t-hi{background:rgba(232,102,61,.16);color:#f19470}
+  .t-lo{background:rgba(74,159,224,.16);color:#7ec0ef}
+  .t-frz{background:rgba(125,211,252,.14);color:#9fdcfd}
+  .t-warn{background:rgba(201,162,39,.18);color:#e0be55}
+  .t-crit{background:rgba(232,61,61,.18);color:#f08282}
+  .t-ok{background:rgba(74,222,128,.13);color:#77dfa0}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  ul{margin:0;padding-left:19px} li{margin-bottom:9px;color:var(--dim)}
+  li b{color:var(--ink);font-weight:600}
+  .foot{color:var(--faint);font-size:12px;line-height:1.65;border-top:1px solid var(--line);
+    padding-top:16px;margin-top:8px}
+  .foot a{color:#7ec0ef}
+
+  .warn{background:rgba(201,162,39,.09);border:1px solid rgba(201,162,39,.34);
+    border-left:3px solid var(--alpine);border-radius:10px;padding:14px 18px;margin-bottom:20px}
+  .warn .wt{color:#e0be55;font-weight:650;font-size:13px;text-transform:uppercase;
+    letter-spacing:.07em;margin-bottom:5px}
+  .warn p{margin:0;font-size:13.5px;color:var(--dim);line-height:1.6}
+  .warn b{color:var(--ink)}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--faint);
+    margin:-8px 0 22px}
+  .meta a{color:#7ec0ef;text-decoration:none}
+  .meta a:hover{text-decoration:underline}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}.chartbox{height:340px}
+    .nt{max-width:none}.scroll{overflow-x:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Plateau Passage — October Weather Profile</h1>
+  <p class="sub">Las Vegas, NV → Durango, CO &nbsp;·&nbsp; <b>1,200 mi</b>, <b>~123,000 ft</b> climbing
+     &nbsp;·&nbsp; Oct 1 – Oct 23 at 60 mi/day &nbsp;·&nbsp; west → east</p>
+
+  <div class="meta">
+    <span>Version __VERSION__ · built __BUILT__</span>
+    <span>Normals through 2020</span>
+    <span><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+    <span><a href="__REPO__">Source &amp; data</a></span>
+    <span>Save this page (⌘S / Ctrl-S) — it works with no signal</span>
+  </div>
+
+  <div class="warn">
+    <div class="wt">Read this before you plan around it</div>
+    <p>These are <b>climatological averages, not a forecast.</b> They describe a typical
+       October, and no single October is typical. One Great Basin cold front can put
+       12–18&nbsp;inches on the high plateaus and drop temperatures <b>30°F below anything on
+       this chart</b> — Cedar Breaks and Lizard Head Pass both close in some years before
+       Halloween. Use this to choose a sleep system, a resupply plan, and where your bail-out
+       points are. Then check <a href="https://www.weather.gov">NWS point forecasts</a> within
+       72 hours of every high crossing, and be willing to change the plan.</p>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Temperature &amp; elevation, west to east</h2>
+      <span class="hint">Shaded band = daily high-to-low range · grey area = elevation</span>
+    </div>
+    <div class="toggle" style="margin-top:14px">
+      <button id="bCamp" class="on">Camp elevation</button>
+      <button id="bPass">Day's high point</button>
+    </div>
+    <div class="chartbox"><canvas id="c1"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Overnight freeze risk &amp; precipitation chance</h2>
+      <span class="hint">Bars = P(low ≤ 32°F) · line = chance of measurable precip</span>
+    </div>
+    <div class="chartbox short" style="margin-top:14px"><canvas id="c2"></canvas></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>What the curve is telling you</h2>
+      <ul id="insights"></ul>
+    </div>
+    <div class="card">
+      <h2>Thresholds this drives</h2>
+      <ul id="gear"></ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Day by day</h2>
+    <div class="scroll">
+    <table>
+      <thead><tr>
+        <th>Date</th><th class="n">Mi</th><th>Landmark</th>
+        <th class="n">Camp ft</th><th class="n">Peak ft</th>
+        <th class="n">High</th><th class="n">Low</th><th class="n">Swing</th>
+        <th class="n">Cold snap</th><th class="n">Freeze</th><th class="n">Precip</th>
+      </tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+    </div>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+const D = __DATA__;
+
+/* ---------- theme ---------- */
+const C = {ink:'#e8edf3',dim:'#94a3b3',faint:'#5e6b7a',line:'#2a323c',
+           hot:'#e8663d',cold:'#4a9fe0',freeze:'#7dd3fc',rain:'#8b7fd6',elev:'#3a4552'};
+Chart.defaults.color = C.dim;
+Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+Chart.defaults.font.size = 11.5;
+
+const labels = D.map(d => d.date.replace('Oct ','') );
+const shortName = n => n.split(/ — | \/ /)[0];
+
+/* ---------- summary stats ---------- */
+const coldest = D.reduce((a,b)=> b.lo<a.lo?b:a);
+const hottest = D.reduce((a,b)=> b.hi>a.hi?b:a);
+const biggestSwing = D.reduce((a,b)=> b.swing>a.swing?b:a);
+const frzNights = D.filter(d=>d.freeze>=50).length;
+const stats = [
+  ['1,800 – 10,600 ft','Elevation range ridden'],
+  [hottest.hi+'°F','Hottest day — '+shortName(hottest.name)],
+  [coldest.lo+'°F','Coldest night — '+shortName(coldest.name)],
+  [Math.min(...D.map(d=>d.coldSnap))+'°F','Design-cold night (10th %ile)'],
+  [frzNights+' of 23','Nights with ≥50% freeze risk'],
+  [biggestSwing.swing+'°F','Largest single-day swing'],
+];
+document.getElementById('stats').innerHTML = stats.map(
+  s=>`<div class="stat"><div class="v">${s[0]}</div><div class="k">${s[1]}</div></div>`).join('');
+
+/* ---------- chart 1 ---------- */
+let mode = 'camp';
+const hiOf = d => mode==='camp' ? d.hi : d.hiPass;
+const loOf = d => mode==='camp' ? d.lo : d.loPass;
+const ftOf = d => mode==='camp' ? d.campFt : d.highFt;
+
+const ch1 = new Chart(document.getElementById('c1'), {
+  data:{ labels,
+    datasets:[
+      { type:'line', label:'Elevation (ft)', yAxisID:'yE', data:D.map(ftOf),
+        borderColor:C.elev, backgroundColor:'rgba(58,69,82,.42)', fill:'origin',
+        borderWidth:1, pointRadius:0, tension:.35, order:5 },
+      { type:'line', label:'Avg high (°F)', yAxisID:'yT', data:D.map(hiOf),
+        borderColor:C.hot, backgroundColor:'rgba(232,102,61,.12)',
+        borderWidth:2.4, pointRadius:2.5, pointBackgroundColor:C.hot,
+        tension:.3, fill:'+1', order:1 },
+      { type:'line', label:'Avg low (°F)', yAxisID:'yT', data:D.map(loOf),
+        borderColor:C.cold, borderWidth:2.4, pointRadius:2.5,
+        pointBackgroundColor:C.cold, tension:.3, order:2 },
+      { type:'line', label:'Cold-snap low (10th %ile)', yAxisID:'yT',
+        data:D.map(d=>d.coldSnap - (mode==='camp'?0:Math.round((d.highFt-d.campFt)/1000*3))),
+        borderColor:'#3d6f96', borderWidth:1.4, borderDash:[4,4],
+        pointRadius:0, tension:.3, order:3 },
+      { type:'line', label:'Freezing (32°F)', yAxisID:'yT', data:D.map(()=>32),
+        borderColor:C.freeze, borderWidth:1.2, borderDash:[2,5], pointRadius:0, order:4 },
+    ]},
+  options:{
+    maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{grid:{color:'#20262e'},ticks:{callback:(v,i)=>'Oct '+labels[i]},
+         border:{color:C.line}},
+      yT:{position:'left',min:5,max:95,title:{display:true,text:'°F',color:C.faint},
+          grid:{color:'#20262e'},border:{color:C.line}},
+      yE:{position:'right',min:0,max:26000,grid:{drawOnChartArea:false},
+          border:{color:C.line},
+          title:{display:true,text:'elevation (ft)',color:C.faint},
+          ticks:{callback:v=>v>11000?'':v.toLocaleString()}},
+    },
+    plugins:{
+      legend:{labels:{boxWidth:11,boxHeight:11,usePointStyle:true,pointStyle:'rectRounded',
+              padding:14,filter:i=>i.text!=='Freezing (32°F)'}},
+      tooltip:{backgroundColor:'#0b0e12',borderColor:C.line,borderWidth:1,padding:11,
+        titleColor:C.ink,bodyColor:C.dim,displayColors:true,boxWidth:9,boxHeight:9,
+        usePointStyle:true,
+        callbacks:{
+          title:(t)=>{const d=D[t[0].dataIndex];return d.date+' — '+d.name;},
+          afterBody:(t)=>{const d=D[t[0].dataIndex];
+            return ['','Terrain: '+d.terrain,
+                    'Freeze risk: '+d.freeze+'%   Precip: '+d.precip+'%','',d.note];}
+        }}
+    }
+  }
+});
+
+function setMode(m){
+  mode=m;
+  ch1.data.datasets[0].data = D.map(ftOf);
+  ch1.data.datasets[1].data = D.map(hiOf);
+  ch1.data.datasets[2].data = D.map(loOf);
+  ch1.data.datasets[3].data = D.map(d=>d.coldSnap - (m==='camp'?0:Math.round((d.highFt-d.campFt)/1000*3)));
+  ch1.data.datasets[0].label = m==='camp' ? 'Camp elevation (ft)' : 'Day high point (ft)';
+  ch1.update();
+  bCamp.classList.toggle('on', m==='camp');
+  bPass.classList.toggle('on', m==='pass');
+}
+bCamp.onclick=()=>setMode('camp');
+bPass.onclick=()=>setMode('pass');
+
+/* ---------- chart 2 ---------- */
+new Chart(document.getElementById('c2'), {
+  data:{ labels,
+    datasets:[
+      { type:'bar', label:'Overnight freeze risk (%)', data:D.map(d=>d.freeze),
+        backgroundColor:D.map(d=> d.freeze>=70?'rgba(125,211,252,.85)'
+                               : d.freeze>=40?'rgba(125,211,252,.5)'
+                               : 'rgba(125,211,252,.22)'),
+        borderRadius:3, borderSkipped:false },
+      { type:'line', label:'Chance of precip (%)', data:D.map(d=>d.precip),
+        borderColor:C.rain, borderWidth:2, pointRadius:2.5,
+        pointBackgroundColor:C.rain, tension:.3 },
+    ]},
+  options:{ maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+    scales:{ x:{grid:{display:false},ticks:{callback:(v,i)=>'Oct '+labels[i]},border:{color:C.line}},
+             y:{min:0,max:100,grid:{color:'#20262e'},border:{color:C.line},
+                ticks:{callback:v=>v+'%'}} },
+    plugins:{ legend:{labels:{boxWidth:11,boxHeight:11,usePointStyle:true,
+                pointStyle:'rectRounded',padding:14}},
+      tooltip:{backgroundColor:'#0b0e12',borderColor:C.line,borderWidth:1,padding:11,
+        titleColor:C.ink,bodyColor:C.dim,
+        callbacks:{title:(t)=>{const d=D[t[0].dataIndex];return d.date+' — '+d.name;}}}}
+  }
+});
+
+/* ---------- table ---------- */
+const frzTag = f => f>=70?'t-crit' : f>=40?'t-warn' : f>=15?'t-frz' : 't-ok';
+document.getElementById('tb').innerHTML = D.map(d=>`
+  <tr>
+    <td style="white-space:nowrap;color:var(--dim)">${d.date}</td>
+    <td class="n" style="color:var(--faint)">${d.mile}</td>
+    <td><span class="lm">${d.name}</span><span class="nt">${d.note}</span></td>
+    <td class="n">${d.campFt.toLocaleString()}</td>
+    <td class="n" style="color:var(--faint)">${d.highFt.toLocaleString()}</td>
+    <td class="n"><span class="tag t-hi">${d.hi}°</span></td>
+    <td class="n"><span class="tag t-lo">${d.lo}°</span></td>
+    <td class="n" style="color:var(--faint)">${d.swing}°</td>
+    <td class="n" style="color:#7ec0ef">${d.coldSnap}°</td>
+    <td class="n"><span class="tag ${frzTag(d.freeze)}">${d.freeze}%</span></td>
+    <td class="n" style="color:var(--faint)">${d.precip}%</td>
+  </tr>`).join('');
+
+/* ---------- narrative ---------- */
+document.getElementById('insights').innerHTML = [
+ `<b>This is not a warming trend — it's a sawtooth.</b> The route crosses two cold spikes:
+   Cedar Breaks (10,300 ft) on ~Oct 7 and Lizard Head Pass (10,222 ft) on ~Oct 22.
+   Between them you drop back into 70°F desert three separate times.`,
+ `<b>The second spike is the dangerous one.</b> Same elevation, three weeks later —
+   October cools roughly 0.5°F per day here, so the San Juans run about 15°F colder
+   than Cedar Breaks did. Freeze risk goes from 67% to 89%.`,
+ `<b>Oct 6, Cedar City, is the hinge.</b> You go from a route where freezing is
+   essentially impossible to one where it's the default, in a single day's ride.
+   That's the natural place to swap or mail-forward cold gear.`,
+ `<b>Diurnal swing is the real story, not the average.</b> Panguitch and the Grand
+   Staircase both swing ~38°F between dawn and mid-afternoon. You'll be shedding
+   layers within 90 minutes of starting most days.`,
+ `<b>Moab (Oct 18) is your last warm night.</b> After that, every remaining night is
+   a coin-flip-or-worse for a hard freeze. It's the logical last rest day.`,
+].map(s=>`<li>${s}</li>`).join('');
+
+document.getElementById('gear').innerHTML = [
+ `<b>Sleep system: 15°F rating.</b> The 10th-percentile night on Lizard Head is
+   ~12°F. A 30°F bag would be survivable-but-miserable roughly a third of the trip.`,
+ `<b>Water strategy flips at Cedar City.</b> West of it the limiter is heat and
+   capacity (Mojave, 88°F days). East of it the limiter is filters and hoses
+   freezing overnight — sleep with both.`,
+ `<b>Precip chance never exceeds ~26%</b> — but at 10,000 ft in late October that
+   precipitation is snow, and Lizard Head/Ophir can close. Carry a bail-out plan
+   to Hwy 145 pavement.`,
+ `<b>Clay roads, not cold, are the trip-ender.</b> Grand Staircase (Oct 10) and the
+   Paradox/Nucla stretch (Oct 19–20) turn to unrideable bentonite after rain.
+   Budget a weather day for each.`,
+ `<b>Daylight shrinks from 11h50m to 10h50m</b> across the trip, and the hardest,
+   highest days are at the end. 60 mi/day is unrealistic over the San Juans —
+   plan 35–45 for Oct 21–23.`,
+].map(s=>`<li>${s}</li>`).join('');
+
+document.getElementById('foot').innerHTML =
+ `<b>Method.</b> Town and park values are October climate normals from long-term NOAA/COOP
+  stations (Las Vegas, St. George, Zion NP, Cedar City, Bryce Canyon NP HQ, Escalante,
+  Boulder, Capitol Reef–Fruita, Hanksville, Natural Bridges NM, Blanding, Monticello, Moab,
+  Naturita, Norwood, Telluride, Durango). Off-station points — Lovell Canyon, Cedar Breaks,
+  Boulder Mountain, Elk Ridge, Lizard Head Pass — are lapse-rate adjusted from the nearest
+  station at 3.5°F/1,000 ft daytime and 3.0°F/1,000 ft overnight (damped for cold-air drainage).
+  Monthly normals are centered on Oct 16, so each day is shifted by 0.5°F/day of seasonal
+  cooling. Freeze probability is P(min ≤ 32°F) assuming daily minima are normally distributed
+  about the adjusted normal with σ = 8°F; the cold-snap column is the 10th percentile of that
+  same distribution. Route mileage and elevation gain are from
+  <a href="https://bikepackingroots.org/project/the-plateau-passage/">Bikepacking Roots</a>,
+  who created and steward the Plateau Passage.<br><br>
+  <b>Known limits.</b> Daily positions assume a steady 60 mi/day from an Oct 1 start; shift the
+  dates and the whole curve shifts with them, because late October cools fast. Wind is not
+  modeled, and on the Norwood and Grand Staircase mesas it is often the thing that decides
+  your day. Off-station high points are lapse-rate estimates, not measurements — treat
+  Cedar Breaks, Boulder Mountain, Elk Ridge and Lizard Head as ±5°F.<br><br>
+  <b>Reuse.</b> Released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY
+  4.0</a> — fork it, re-run it for your own dates or a different route, publish the result.
+  The generator is <code>build_data.py</code> in the <a href="__REPO__">repository</a>.
+  Charts by <a href="https://www.chartjs.org">Chart.js</a> (MIT), bundled for offline use.
+  Corrections welcome via GitHub issue — especially from anyone who has actually ridden
+  this in October.`;
+
+setMode('camp');
+</script>
+</body>
+</html>
