@@ -20,7 +20,7 @@
  {
   "day": 2,
   "date": "Oct 2",
-  "mile": 60,
+  "mile": 55,
   "name": "Spring Mtns / Lovell Canyon, NV",
   "campFt": 6000,
   "highFt": 7500,
@@ -74,7 +74,7 @@
  {
   "day": 5,
   "date": "Oct 5",
-  "mile": 240,
+  "mile": 235,
   "name": "Zion NP / Gooseberry Mesa",
   "campFt": 3900,
   "highFt": 5200,
@@ -92,7 +92,7 @@
  {
   "day": 6,
   "date": "Oct 6",
-  "mile": 300,
+  "mile": 295,
   "name": "Cedar City, UT",
   "campFt": 5850,
   "highFt": 6200,
@@ -110,7 +110,7 @@
  {
   "day": 7,
   "date": "Oct 7",
-  "mile": 360,
+  "mile": 340,
   "name": "Cedar Breaks NM / Brian Head",
   "campFt": 10300,
   "highFt": 10600,
@@ -128,7 +128,7 @@
  {
   "day": 8,
   "date": "Oct 8",
-  "mile": 420,
+  "mile": 400,
   "name": "Panguitch / Red Canyon, UT",
   "campFt": 6600,
   "highFt": 8000,
@@ -146,7 +146,7 @@
  {
   "day": 9,
   "date": "Oct 9",
-  "mile": 480,
+  "mile": 450,
   "name": "Bryce Canyon NP",
   "campFt": 7900,
   "highFt": 8300,
@@ -164,7 +164,7 @@
  {
   "day": 10,
   "date": "Oct 10",
-  "mile": 540,
+  "mile": 510,
   "name": "Henrieville / Grand Staircase",
   "campFt": 5900,
   "highFt": 7200,
@@ -182,7 +182,7 @@
  {
   "day": 11,
   "date": "Oct 11",
-  "mile": 600,
+  "mile": 570,
   "name": "Escalante, UT",
   "campFt": 5820,
   "highFt": 7000,
@@ -200,7 +200,7 @@
  {
   "day": 12,
   "date": "Oct 12",
-  "mile": 660,
+  "mile": 625,
   "name": "Boulder, UT",
   "campFt": 6700,
   "highFt": 7400,
@@ -218,7 +218,7 @@
  {
   "day": 13,
   "date": "Oct 13",
-  "mile": 720,
+  "mile": 680,
   "name": "Boulder Mtn \u2192 Capitol Reef NP",
   "campFt": 5500,
   "highFt": 9600,
@@ -236,7 +236,7 @@
  {
   "day": 14,
   "date": "Oct 14",
-  "mile": 780,
+  "mile": 745,
   "name": "Hanksville / Hite \u2014 Lost Canyon Point",
   "campFt": 4200,
   "highFt": 6000,
@@ -254,7 +254,7 @@
  {
   "day": 15,
   "date": "Oct 15",
-  "mile": 840,
+  "mile": 800,
   "name": "Natural Bridges NM / Elk Ridge",
   "campFt": 6500,
   "highFt": 8500,
@@ -272,7 +272,7 @@
  {
   "day": 16,
   "date": "Oct 16",
-  "mile": 900,
+  "mile": 855,
   "name": "Monticello, UT (Abajo Mtns)",
   "campFt": 7070,
   "highFt": 8200,
@@ -290,7 +290,7 @@
  {
   "day": 17,
   "date": "Oct 17",
-  "mile": 960,
+  "mile": 915,
   "name": "Canyonlands rim / Lockhart Basin",
   "campFt": 5000,
   "highFt": 6200,
@@ -308,7 +308,7 @@
  {
   "day": 18,
   "date": "Oct 18",
-  "mile": 1020,
+  "mile": 970,
   "name": "Moab, UT",
   "campFt": 4000,
   "highFt": 5000,
@@ -326,7 +326,7 @@
  {
   "day": 19,
   "date": "Oct 19",
-  "mile": 1080,
+  "mile": 1020,
   "name": "La Sal Mtns / Paradox Valley",
   "campFt": 7000,
   "highFt": 8800,
@@ -344,7 +344,7 @@
  {
   "day": 20,
   "date": "Oct 20",
-  "mile": 1140,
+  "mile": 1075,
   "name": "Nucla / Naturita, CO",
   "campFt": 5400,
   "highFt": 7000,
@@ -362,7 +362,7 @@
  {
   "day": 21,
   "date": "Oct 21",
-  "mile": 1200,
+  "mile": 1125,
   "name": "Norwood, CO",
   "campFt": 7000,
   "highFt": 7600,
@@ -380,7 +380,7 @@
  {
   "day": 22,
   "date": "Oct 22",
-  "mile": 1260,
+  "mile": 1165,
   "name": "Telluride / Lizard Head Pass",
   "campFt": 8750,
   "highFt": 10222,
@@ -398,7 +398,7 @@
  {
   "day": 23,
   "date": "Oct 23",
-  "mile": 1320,
+  "mile": 1210,
   "name": "Rico \u2192 Durango, CO \u2014 finish",
   "campFt": 6512,
   "highFt": 9000,

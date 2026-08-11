@@ -1,0 +1,123 @@
+[
+ {
+  "from": 800,
+  "to": 970,
+  "name": "Babylon Fire burn scar \u2014 Bears Ears / Elk Ridge / Needles",
+  "type": "current",
+  "status": "verify",
+  "window": "Closure order ran 28 Jun \u2013 31 Aug 2026",
+  "detail": "Utah's first megafire in eight years: 107,189 acres, 95% contained in early August 2026. The closure covered the entire Monticello Ranger District, Dark Canyon Wilderness, Bears Ears NM, and all BLM/FS land south of Hwy 211, west of Hwy 191 and north of Hwy 95 \u2014 which is precisely the Natural Bridges \u2192 Elk Ridge \u2192 Monticello section. Canyonlands' Needles District closed too. THE ORDER WAS WRITTEN TO EXPIRE 31 AUG, BUT BURN-AREA CLOSURES ARE ROUTINELY EXTENDED for hazard trees and road damage, and reopening is not the same as safe: fresh burn scars produce debris flows and flash floods in rain far beyond the burn itself, springs and stock tanks run with ash, and shade disappears. If you are riding this in 2026 or 2027, this is the first phone call you make, not the last.",
+  "src": "Manti-La Sal NF closure order",
+  "url": "https://www.fs.usda.gov/r04/manti-lasal/alerts/babylon-wildfire-closure-order"
+ },
+ {
+  "from": 855,
+  "to": 1210,
+  "name": "Utah general deer rifle hunt",
+  "type": "current",
+  "status": "open",
+  "window": "17\u201325 Oct 2026 (early units 7\u201311 Oct)",
+  "detail": "The nine-day general any-legal-weapon season lands squarely on the Monticello \u2192 Moab \u2192 La Sal stretch of a 1 Oct departure. Public land stays open and you are not obliged to do anything, but dispersed camping gets crowded and noisy, forest roads carry far more traffic, and blaze orange stops being optional. Colorado's seasons open in October too. Easiest fix is to be through the Abajos and La Sals before the 17th, or to sleep in towns through that window.",
+  "src": "Utah DWR season dates",
+  "url": "https://www.eregulations.com/utah/hunting/hunting-seasons-and-dates"
+ },
+ {
+  "from": 340,
+  "to": 345,
+  "name": "Brian Head village",
+  "type": "annual",
+  "status": "closed",
+  "window": "Largely shut between summer and ski seasons",
+  "detail": "October falls in the shoulder gap: most of the village is closed, and it reliably fails as a resupply. Already tiered 'minimal' in the resupply table \u2014 this is why.",
+  "src": "Visit Cedar City / Brian Head",
+  "url": "https://visitcedarcity.com/"
+ },
+ {
+  "from": 340,
+  "to": 360,
+  "name": "Cedar Breaks NM \u2014 SR-148 rim road",
+  "type": "annual",
+  "status": "marginal",
+  "window": "Typically closed mid-Nov \u2192 late May",
+  "detail": "The rim road is gated for winter once snowpack is sufficient \u2014 usually mid-November, so an early-October crossing is normally fine. But 'sufficient snowpack' is a judgement call, not a date, and this is 10,300 ft. An early storm can shut it with no notice. SR-143, the north/east approach, is plowed in daylight hours and is your fallback.",
+  "src": "NPS Cedar Breaks winter access",
+  "url": "https://www.nps.gov/cebr/planyourvisit/winter-access.htm"
+ },
+ {
+  "from": 450,
+  "to": 600,
+  "name": "Grand Staircase clay roads",
+  "type": "annual",
+  "status": "marginal",
+  "window": "Not seasonal \u2014 condition-dependent year-round",
+  "detail": "Included because riders keep reading 'open' as 'passable'. The bentonite clay through the Grand Staircase and again around Paradox turns to unrideable, unpushable glue within minutes of rain and stays that way for a day or more after. No gate will warn you. Precipitation odds here run 13\u201319% per day in October.",
+  "src": "BLM Grand Staircase-Escalante",
+  "url": "https://www.blm.gov/programs/national-conservation-lands/utah/grand-staircase-escalante"
+ },
+ {
+  "from": 800,
+  "to": 855,
+  "name": "Elk Ridge Road (FR-088)",
+  "type": "annual",
+  "status": "marginal",
+  "window": "Generally passable Apr \u2192 Nov; best Jun \u2192 Oct",
+  "detail": "Single-lane dirt along a 9,000 ft spine. It is at the very end of its usable window in late October and the first real snow ends it \u2014 there is no plowing and no gate schedule to rely on. Combined with the Babylon burn scar, this is the least certain link on the whole route. Have the Hwy 95 pavement bail-out mapped before you commit. Monticello Ranger District: (435) 636-3340.",
+  "src": "Manti-La Sal NF \u2014 Elk Ridge",
+  "url": "https://www.fs.usda.gov/r04/manti-lasal/recreation/elk-ridge-recreation-area"
+ },
+ {
+  "from": 830,
+  "to": 835,
+  "name": "Natural Bridges NM \u2014 potable water",
+  "type": "annual",
+  "status": "marginal",
+  "window": "Shut off after the first hard freeze",
+  "detail": "The visitor-centre spigot is the only water in a long dry stretch, and it is turned off once freezing becomes routine \u2014 which the weather model puts at roughly 29% probability on the night you would arrive, rising fast after. Call before you rely on it: (435) 692-1234.",
+  "src": "NPS Natural Bridges",
+  "url": "https://www.nps.gov/nabr/planyourvisit/conditions.htm"
+ },
+ {
+  "from": 215,
+  "to": 250,
+  "name": "Zion \u2014 Kolob Terrace Road / Lava Point",
+  "type": "annual",
+  "status": "open",
+  "window": "Snow closure possible Nov \u2192 May",
+  "detail": "Only the lower ~14 miles are plowed; above that it closes with snow, usually from November. Lava Point Campground runs May through September or October depending on snow. Fine in early October in a normal year, but it is the first thing to shut in a cold one.",
+  "src": "NPS Zion conditions",
+  "url": "https://www.nps.gov/zion/planyourvisit/conditions.htm"
+ },
+ {
+  "from": 625,
+  "to": 700,
+  "name": "Boulder Mountain \u2014 Hwy 12 and the dirt alternates",
+  "type": "annual",
+  "status": "open",
+  "window": "Hwy 12 plowed year-round",
+  "detail": "The paved 9,600 ft crossing stays open all year, though it ices and can be briefly impassable after a storm. The unpaved alternates on the Aquarius Plateau \u2014 North Slope, Deer Creek, Pleasant Creek \u2014 are a different matter and gate or become impassable with the first real snow. Ride the pass in the middle of the day, not at dawn.",
+  "src": "Scenic Byway 12",
+  "url": "https://www.visitutah.com/articles/the-all-american-road-scenic-byway-12"
+ },
+ {
+  "from": 1020,
+  "to": 1075,
+  "name": "La Sal Mountains \u2014 Geyser Pass Road",
+  "type": "annual",
+  "status": "open",
+  "window": "Closed 15 Dec \u2192 15 May",
+  "detail": "Open through October. The Loop Road is plowed to the Geyser Pass turn-off in winter and less often to Castle Valley. Not a seasonal risk for an October ride, but at 9,600 ft it holds early snow, and multi-year construction on the Loop Road has produced intermittent daytime closures \u2014 worth a check.",
+  "src": "Manti-La Sal NF \u2014 Geyser Pass",
+  "url": "https://www.fs.usda.gov/r04/manti-lasal/recreation/geyser-pass-trailhead"
+ },
+ {
+  "from": 1165,
+  "to": 1210,
+  "name": "Lizard Head Pass \u2014 Hwy 145",
+  "type": "annual",
+  "status": "open",
+  "window": "Plowed and open year-round",
+  "detail": "The pavement over the pass is maintained all winter, so it is not a seasonal closure \u2014 but it is 10,222 ft on ~22 October with the highest freeze and precipitation odds on the route. It closes during storms, not for the season. CDOT COtrip is the live source.",
+  "src": "CDOT road conditions",
+  "url": "https://www.cotrip.org/"
+ }
+]

@@ -90,8 +90,70 @@
     margin:-8px 0 22px}
   .meta a{color:#7ec0ef;text-decoration:none}
   .meta a:hover{text-decoration:underline}
+  /* sticky section nav */
+  .nav{position:sticky;top:0;z-index:30;background:rgba(15,18,22,.93);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+    margin:0 -22px 24px;padding:11px 22px;display:flex;gap:7px;flex-wrap:wrap}
+  .nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:550;
+    padding:6px 13px;border-radius:7px;border:1px solid transparent;transition:.13s}
+  .nav a:hover{color:var(--ink);background:var(--panel2)}
+  .nav a.on{color:var(--ink);background:#2b3644;border-color:#4a5768}
+  section{scroll-margin-top:64px}
+  h3{font-size:16px;margin:26px 0 12px;font-weight:620;letter-spacing:-.01em}
+  h3:first-child{margin-top:0}
+
+  /* route strip */
+  .strip{position:relative;height:96px;margin:22px 0 8px}
+  .strip .rail{position:absolute;top:44px;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,#8a5a3c,#4a6a55,#3c5a8a);border-radius:3px}
+  .dot{position:absolute;top:37px;width:13px;height:13px;border-radius:50%;
+    margin-left:-6.5px;border:2px solid var(--bg);cursor:default}
+  .dot.full{background:#4ade80} .dot.good{background:#a3d977}
+  .dot.moderate{background:#e0be55} .dot.minimal{background:#c97a3c}
+  .dot.none{background:#e05353}
+  .dot.off{top:24px;height:13px}
+  .stem{position:absolute;width:1px;background:var(--faint);margin-left:-.5px}
+  .slab{position:absolute;top:62px;font-size:10.5px;color:var(--faint);
+    transform:translateX(-50%);white-space:nowrap}
+  .legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:var(--faint);
+    margin-top:6px}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;
+    margin-right:5px;vertical-align:middle;font-style:normal}
+
+  .gapcard{background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--line)}
+  .gapcard.critical{border-left-color:#e05353;background:rgba(224,83,83,.07)}
+  .gapcard.watch{border-left-color:var(--alpine)}
+  .gaphead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    flex-wrap:wrap;margin-bottom:5px}
+  .gaproute{font-weight:620;font-size:14px}
+  .gapnum{font-size:13px;color:var(--dim);white-space:nowrap}
+  .gapcard p{margin:0;font-size:12.5px;color:var(--faint);line-height:1.55}
+
+  .t-full{background:rgba(74,222,128,.15);color:#77dfa0}
+  .t-good{background:rgba(163,217,119,.15);color:#b3e08d}
+  .t-moderate{background:rgba(224,190,85,.16);color:#e0be55}
+  .t-minimal{background:rgba(201,122,60,.18);color:#d69a6b}
+  .t-none{background:rgba(224,83,83,.2);color:#f08282}
+  .t-crit2{background:rgba(224,83,83,.16);color:#f08282}
+  .t-rec{background:rgba(125,211,252,.14);color:#9fdcfd}
+  .t-com{background:rgba(148,163,179,.14);color:var(--dim)}
+  .t-opt{background:rgba(148,163,179,.09);color:var(--faint)}
+
+  .wsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;
+    margin:4px 0 18px}
+  .wsum div{background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+    padding:11px 13px}
+  .wsum .v{font-size:19px;font-weight:650;letter-spacing:-.02em}
+  .wsum .k{font-size:11px;color:var(--faint);text-transform:uppercase;
+    letter-spacing:.05em;margin-top:2px}
+  .why{color:var(--faint);font-size:12px;display:block;margin-top:3px;max-width:520px}
+  .conf{font-size:10px;padding:1px 5px;border-radius:4px;background:#252c35;
+    color:var(--faint);margin-left:5px}
+
   @media(max-width:820px){.grid2{grid-template-columns:1fr}.chartbox{height:340px}
-    .nt{max-width:none}.scroll{overflow-x:auto}}
+    .nt{max-width:none}.scroll{overflow-x:auto}.why{max-width:none}
+    .nav{margin:0 -14px 18px;padding:9px 14px}.strip{display:none}}
 </style>
 </head>
 <body>
@@ -102,11 +164,34 @@
      &nbsp;·&nbsp; Oct 1 – Oct 23 at 60 mi/day &nbsp;·&nbsp; west → east</p>
 
   <div class="meta">
-    <span>Version 1.0 · built August 2026</span>
+    <span>Version 1.2 · built August 2026</span>
     <span>Normals through 2020</span>
     <span><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
-    <span><a href="https://github.com/YOUR-USERNAME/plateau-passage-weather">Source &amp; data</a></span>
+    <span><a href="https://github.com/snmcbee-create/plateau-passage-weather">Source &amp; data</a></span>
     <span>Save this page (⌘S / Ctrl-S) — it works with no signal</span>
+  </div>
+
+  <nav class="nav">
+    <a href="#weather" class="on">Weather</a>
+    <a href="#access">Seasonal access</a>
+    <a href="#resupply">Resupply &amp; food</a>
+    <a href="#packing">Packing list</a>
+    <a href="#method">Method &amp; limits</a>
+  </nav>
+
+  <div class="warn" style="background:rgba(224,83,83,.09);border-color:rgba(224,83,83,.4);
+       border-left-color:#e05353">
+    <div class="wt" style="color:#f08282">Current conditions — checked August 2026</div>
+    <p><b>The Babylon Fire burned 107,189 acres across Bears Ears, Dark Canyon and the
+       Monticello Ranger District in summer 2026</b> — Utah's first megafire in eight years,
+       95% contained in early August. The closure order covered the entire Natural Bridges →
+       Elk Ridge → Monticello section of this route, plus Canyonlands' Needles District, and
+       was written to expire 31 August 2026.
+       <b>Burn-area closures are routinely extended, and reopening is not the same as safe.</b>
+       If you are riding this in 2026 or 2027, confirm access with the
+       <a href="https://www.fs.usda.gov/r04/manti-lasal/alerts/babylon-wildfire-closure-order">Manti-La Sal
+       National Forest</a> before anything else. See
+       <a href="#access">Seasonal access</a> for the rest.</p>
   </div>
 
   <div class="warn">
@@ -122,6 +207,7 @@
 
   <div class="stats" id="stats"></div>
 
+  <section id="weather">
   <div class="card">
     <div class="head">
       <h2 style="margin-bottom:0">Temperature &amp; elevation, west to east</h2>
@@ -167,12 +253,99 @@
     </table>
     </div>
   </div>
+  </section>
 
+  <section id="access">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Seasonal access &amp; closures</h2>
+      <span class="hint">Status shown is what to expect during an <b>October</b> ride</span>
+    </div>
+    <p style="color:var(--dim);font-size:13.5px;margin:14px 0 0;max-width:800px">
+      Parts of this route are not open all year, and a few are not open every year. Two kinds
+      of thing are listed together below, because as a rider you only care whether the road
+      goes: <b style="color:var(--ink)">year-specific events</b> like fire closures and hunt
+      seasons, and <b style="color:var(--ink)">recurring seasonal windows</b>. Every entry
+      links to the managing agency — <b style="color:var(--ink)">check the agency, not this
+      page</b>, which is a snapshot and will go stale.</p>
+    <div id="access-list" style="margin-top:18px"></div>
+  </div>
+  </section>
+
+  <section id="resupply">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Resupply &amp; food management</h2>
+      <span class="hint">25 stops, west → east · dot colour = what you can actually buy</span>
+    </div>
+
+    <div class="strip" id="strip"></div>
+    <div class="legend">
+      <span><i style="background:#4ade80"></i>Full — rebuild everything</span>
+      <span><i style="background:#a3d977"></i>Good — real grocery</span>
+      <span><i style="background:#e0be55"></i>Moderate — calories, no choice</span>
+      <span><i style="background:#c97a3c"></i>Minimal — a snack, assume nothing</span>
+      <span><i style="background:#e05353"></i>None — no food sold</span>
+      <span style="color:var(--dim)">Raised dots sit off route</span>
+    </div>
+
+    <h3 style="margin-top:30px">The carries that actually decide your food plan</h3>
+    <p style="color:var(--dim);font-size:13.5px;margin:0 0 16px;max-width:770px">
+      Raw distance ranks these badly. A 120-mile gap ending at a supermarket you ride straight
+      past is far easier than a 110-mile gap that dead-ends at a closed outpost and a 28-mile
+      round-trip detour. These are scored on what actually bites: dead stops inside the gap,
+      the detour you have to ride to reach the far end, and dry country.</p>
+    <div id="gaps"></div>
+
+    <h3 style="margin-top:28px">Every stop</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr>
+        <th class="n">Mile</th><th>Stop</th><th class="n">Off route</th>
+        <th>Buy</th><th class="n">Days food</th><th>Services</th>
+      </tr></thead>
+      <tbody id="rtb"></tbody>
+    </table>
+    </div>
+
+    <h3 style="margin-top:28px">Turning that into a food plan</h3>
+    <ul id="food"></ul>
+  </div>
+  </section>
+
+  <section id="packing">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Packing list</h2>
+      <span class="hint">Specced against the 12–88°F range this route actually spans</span>
+    </div>
+
+    <p style="color:var(--dim);font-size:13.5px;margin:14px 0 4px;max-width:800px">
+      The hard part of October here isn't the cold — it's the <b style="color:var(--ink)">76°F
+      spread</b> between an 88°F Mojave afternoon and a 12°F night on Lizard Head Pass, carried
+      on one bike. Everything below is specced against the weather model above rather than a
+      generic three-season list. Weights are typical, not best-in-class, and there are no brand
+      names: those go stale, and your kit is your own.</p>
+
+    <div class="wsum" id="wsum"></div>
+
+    <div class="toggle">
+      <button id="pAll" class="on">Everything</button>
+      <button id="pCrit">Critical only</button>
+      <button id="pLight">Lightest viable</button>
+    </div>
+
+    <div id="packlist"></div>
+  </div>
+  </section>
+
+  <section id="method">
   <p class="foot" id="foot"></p>
+  </section>
 </div>
 
 <script>
-const D = [{"day":1,"date":"Oct 1","mile":0,"name":"Las Vegas, NV — depart","campFt":2000,"highFt":3200,"terrain":"Mojave Desert","note":"Hot start. Ride early; 2+ gal water capacity out of town.","hi":88,"lo":68,"hiPass":84,"loPass":65,"swing":20,"freeze":0,"precip":6,"coldSnap":58},{"day":2,"date":"Oct 2","mile":60,"name":"Spring Mtns / Lovell Canyon, NV","campFt":6000,"highFt":7500,"terrain":"Sky-island pinyon","note":"First 4,000 ft climb. 20°F colder than the Strip in one day.","hi":72,"lo":47,"hiPass":67,"loPass":42,"swing":25,"freeze":3,"precip":10,"coldSnap":37},{"day":3,"date":"Oct 3","mile":120,"name":"Mesquite / Beaver Dam Wash, NV–AZ","campFt":1800,"highFt":4200,"terrain":"Mojave Desert","note":"Lowest point of the route. Hottest day you'll have.","hi":88,"lo":60,"hiPass":80,"loPass":53,"swing":28,"freeze":0,"precip":7,"coldSnap":50},{"day":4,"date":"Oct 4","mile":180,"name":"St. George, UT","campFt":2760,"highFt":3600,"terrain":"Red-rock desert","note":"Resupply. Last reliably warm night for two weeks.","hi":85,"lo":58,"hiPass":82,"loPass":55,"swing":27,"freeze":0,"precip":9,"coldSnap":48},{"day":5,"date":"Oct 5","mile":240,"name":"Zion NP / Gooseberry Mesa","campFt":3900,"highFt":5200,"terrain":"Slickrock mesa","note":"Slickrock. Nights start dipping into the 40s.","hi":84,"lo":54,"hiPass":79,"loPass":51,"swing":29,"freeze":0,"precip":12,"coldSnap":44},{"day":6,"date":"Oct 6","mile":300,"name":"Cedar City, UT","campFt":5850,"highFt":6200,"terrain":"Great Basin edge","note":"TRANSITION DAY. First frost-capable night. Resupply cold gear here.","hi":71,"lo":39,"hiPass":70,"loPass":38,"swing":32,"freeze":19,"precip":13,"coldSnap":29},{"day":7,"date":"Oct 7","mile":360,"name":"Cedar Breaks NM / Brian Head","campFt":10300,"highFt":10600,"terrain":"Alpine / subalpine","note":"COLD SPIKE #1. Above 10,000 ft. Snow is entirely possible.","hi":50,"lo":28,"hiPass":49,"loPass":28,"swing":22,"freeze":67,"precip":26,"coldSnap":18},{"day":8,"date":"Oct 8","mile":420,"name":"Panguitch / Red Canyon, UT","campFt":6600,"highFt":8000,"terrain":"High valley","note":"Panguitch is a cold-air sink — colder at night than the pass above it.","hi":68,"lo":30,"hiPass":63,"loPass":26,"swing":38,"freeze":60,"precip":14,"coldSnap":20},{"day":9,"date":"Oct 9","mile":480,"name":"Bryce Canyon NP","campFt":7900,"highFt":8300,"terrain":"High plateau","note":"Hard freeze most nights. Warm days, brutal mornings.","hi":64,"lo":30,"hiPass":63,"loPass":29,"swing":34,"freeze":57,"precip":19,"coldSnap":20},{"day":10,"date":"Oct 10","mile":540,"name":"Henrieville / Grand Staircase","campFt":5900,"highFt":7200,"terrain":"Desert canyon","note":"Big diurnal swing — 35°F spread. Clay roads impassable when wet.","hi":71,"lo":36,"hiPass":66,"loPass":32,"swing":35,"freeze":31,"precip":14,"coldSnap":26},{"day":11,"date":"Oct 11","mile":600,"name":"Escalante, UT","campFt":5820,"highFt":7000,"terrain":"Desert canyon","note":"Resupply. Hole-in-the-Rock country.","hi":70,"lo":38,"hiPass":66,"loPass":34,"swing":33,"freeze":25,"precip":14,"coldSnap":27},{"day":12,"date":"Oct 12","mile":660,"name":"Boulder, UT","campFt":6700,"highFt":7400,"terrain":"Plateau foothills","note":"Last services before Boulder Mountain.","hi":68,"lo":39,"hiPass":66,"loPass":37,"swing":29,"freeze":19,"precip":15,"coldSnap":29},{"day":13,"date":"Oct 13","mile":720,"name":"Boulder Mtn → Capitol Reef NP","campFt":5500,"highFt":9600,"terrain":"Alpine → desert","note":"9,600 ft pass then 4,000 ft descent. Ride the pass midday, not dawn.","hi":72,"lo":42,"hiPass":58,"loPass":29,"swing":31,"freeze":12,"precip":13,"coldSnap":31},{"day":14,"date":"Oct 14","mile":780,"name":"Hanksville / Hite — Lost Canyon Point","campFt":4200,"highFt":6000,"terrain":"Slickrock desert","note":"Driest, most remote water carry of the route. Warm reprieve.","hi":73,"lo":40,"hiPass":67,"loPass":35,"swing":33,"freeze":16,"precip":10,"coldSnap":30},{"day":15,"date":"Oct 15","mile":840,"name":"Natural Bridges NM / Elk Ridge","campFt":6500,"highFt":8500,"terrain":"Ponderosa mesa","note":"Bears Ears high country. Elk Ridge tops 8,500 ft.","hi":66,"lo":36,"hiPass":58,"loPass":30,"swing":29,"freeze":29,"precip":18,"coldSnap":26},{"day":16,"date":"Oct 16","mile":900,"name":"Monticello, UT (Abajo Mtns)","campFt":7070,"highFt":8200,"terrain":"Mountain town","note":"Coldest town on the route until Colorado. Full resupply.","hi":62,"lo":35,"hiPass":58,"loPass":32,"swing":27,"freeze":35,"precip":18,"coldSnap":25},{"day":17,"date":"Oct 17","mile":960,"name":"Canyonlands rim / Lockhart Basin","campFt":5000,"highFt":6200,"terrain":"Canyon country","note":"Descent back into warm desert. Enjoy it.","hi":70,"lo":42,"hiPass":66,"loPass":38,"swing":29,"freeze":12,"precip":13,"coldSnap":31},{"day":18,"date":"Oct 18","mile":1020,"name":"Moab, UT","campFt":4000,"highFt":5000,"terrain":"Red-rock desert","note":"Warmest nights since St. George. Best place for a rest day.","hi":72,"lo":43,"hiPass":68,"loPass":40,"swing":29,"freeze":8,"precip":13,"coldSnap":33},{"day":19,"date":"Oct 19","mile":1080,"name":"La Sal Mtns / Paradox Valley","campFt":7000,"highFt":8800,"terrain":"Montane forest","note":"Climb out of Moab into aspen. Nights turn hard again.","hi":62,"lo":32,"hiPass":55,"loPass":26,"swing":30,"freeze":52,"precip":19,"coldSnap":21},{"day":20,"date":"Oct 20","mile":1140,"name":"Nucla / Naturita, CO","campFt":5400,"highFt":7000,"terrain":"High desert","note":"Last low-elevation night of the trip. Stage for the San Juans.","hi":66,"lo":35,"hiPass":60,"loPass":30,"swing":31,"freeze":35,"precip":14,"coldSnap":25},{"day":21,"date":"Oct 21","mile":1200,"name":"Norwood, CO","campFt":7000,"highFt":7600,"terrain":"Wheat mesa","note":"Wind-exposed mesa. Weather now driven by Rockies, not desert.","hi":60,"lo":28,"hiPass":57,"loPass":26,"swing":32,"freeze":71,"precip":19,"coldSnap":17},{"day":22,"date":"Oct 22","mile":1260,"name":"Telluride / Lizard Head Pass","campFt":8750,"highFt":10222,"terrain":"Subalpine","note":"COLD SPIKE #2 — the trip's crux. Late Oct at 10,000+ ft.","hi":54,"lo":22,"hiPass":49,"loPass":18,"swing":32,"freeze":89,"precip":25,"coldSnap":12},{"day":23,"date":"Oct 23","mile":1320,"name":"Rico → Durango, CO — finish","campFt":6512,"highFt":9000,"terrain":"Montane → valley","note":"Long descent to the Animas. Durango is a notorious cold sink at dawn.","hi":62,"lo":26,"hiPass":54,"loPass":19,"swing":36,"freeze":75,"precip":18,"coldSnap":16}];
+const D = [{"day":1,"date":"Oct 1","mile":0,"name":"Las Vegas, NV — depart","campFt":2000,"highFt":3200,"terrain":"Mojave Desert","note":"Hot start. Ride early; 2+ gal water capacity out of town.","hi":88,"lo":68,"hiPass":84,"loPass":65,"swing":20,"freeze":0,"precip":6,"coldSnap":58},{"day":2,"date":"Oct 2","mile":55,"name":"Spring Mtns / Lovell Canyon, NV","campFt":6000,"highFt":7500,"terrain":"Sky-island pinyon","note":"First 4,000 ft climb. 20°F colder than the Strip in one day.","hi":72,"lo":47,"hiPass":67,"loPass":42,"swing":25,"freeze":3,"precip":10,"coldSnap":37},{"day":3,"date":"Oct 3","mile":120,"name":"Mesquite / Beaver Dam Wash, NV–AZ","campFt":1800,"highFt":4200,"terrain":"Mojave Desert","note":"Lowest point of the route. Hottest day you'll have.","hi":88,"lo":60,"hiPass":80,"loPass":53,"swing":28,"freeze":0,"precip":7,"coldSnap":50},{"day":4,"date":"Oct 4","mile":180,"name":"St. George, UT","campFt":2760,"highFt":3600,"terrain":"Red-rock desert","note":"Resupply. Last reliably warm night for two weeks.","hi":85,"lo":58,"hiPass":82,"loPass":55,"swing":27,"freeze":0,"precip":9,"coldSnap":48},{"day":5,"date":"Oct 5","mile":235,"name":"Zion NP / Gooseberry Mesa","campFt":3900,"highFt":5200,"terrain":"Slickrock mesa","note":"Slickrock. Nights start dipping into the 40s.","hi":84,"lo":54,"hiPass":79,"loPass":51,"swing":29,"freeze":0,"precip":12,"coldSnap":44},{"day":6,"date":"Oct 6","mile":295,"name":"Cedar City, UT","campFt":5850,"highFt":6200,"terrain":"Great Basin edge","note":"TRANSITION DAY. First frost-capable night. Resupply cold gear here.","hi":71,"lo":39,"hiPass":70,"loPass":38,"swing":32,"freeze":19,"precip":13,"coldSnap":29},{"day":7,"date":"Oct 7","mile":340,"name":"Cedar Breaks NM / Brian Head","campFt":10300,"highFt":10600,"terrain":"Alpine / subalpine","note":"COLD SPIKE #1. Above 10,000 ft. Snow is entirely possible.","hi":50,"lo":28,"hiPass":49,"loPass":28,"swing":22,"freeze":67,"precip":26,"coldSnap":18},{"day":8,"date":"Oct 8","mile":400,"name":"Panguitch / Red Canyon, UT","campFt":6600,"highFt":8000,"terrain":"High valley","note":"Panguitch is a cold-air sink — colder at night than the pass above it.","hi":68,"lo":30,"hiPass":63,"loPass":26,"swing":38,"freeze":60,"precip":14,"coldSnap":20},{"day":9,"date":"Oct 9","mile":450,"name":"Bryce Canyon NP","campFt":7900,"highFt":8300,"terrain":"High plateau","note":"Hard freeze most nights. Warm days, brutal mornings.","hi":64,"lo":30,"hiPass":63,"loPass":29,"swing":34,"freeze":57,"precip":19,"coldSnap":20},{"day":10,"date":"Oct 10","mile":510,"name":"Henrieville / Grand Staircase","campFt":5900,"highFt":7200,"terrain":"Desert canyon","note":"Big diurnal swing — 35°F spread. Clay roads impassable when wet.","hi":71,"lo":36,"hiPass":66,"loPass":32,"swing":35,"freeze":31,"precip":14,"coldSnap":26},{"day":11,"date":"Oct 11","mile":570,"name":"Escalante, UT","campFt":5820,"highFt":7000,"terrain":"Desert canyon","note":"Resupply. Hole-in-the-Rock country.","hi":70,"lo":38,"hiPass":66,"loPass":34,"swing":33,"freeze":25,"precip":14,"coldSnap":27},{"day":12,"date":"Oct 12","mile":625,"name":"Boulder, UT","campFt":6700,"highFt":7400,"terrain":"Plateau foothills","note":"Last services before Boulder Mountain.","hi":68,"lo":39,"hiPass":66,"loPass":37,"swing":29,"freeze":19,"precip":15,"coldSnap":29},{"day":13,"date":"Oct 13","mile":680,"name":"Boulder Mtn → Capitol Reef NP","campFt":5500,"highFt":9600,"terrain":"Alpine → desert","note":"9,600 ft pass then 4,000 ft descent. Ride the pass midday, not dawn.","hi":72,"lo":42,"hiPass":58,"loPass":29,"swing":31,"freeze":12,"precip":13,"coldSnap":31},{"day":14,"date":"Oct 14","mile":745,"name":"Hanksville / Hite — Lost Canyon Point","campFt":4200,"highFt":6000,"terrain":"Slickrock desert","note":"Driest, most remote water carry of the route. Warm reprieve.","hi":73,"lo":40,"hiPass":67,"loPass":35,"swing":33,"freeze":16,"precip":10,"coldSnap":30},{"day":15,"date":"Oct 15","mile":800,"name":"Natural Bridges NM / Elk Ridge","campFt":6500,"highFt":8500,"terrain":"Ponderosa mesa","note":"Bears Ears high country. Elk Ridge tops 8,500 ft.","hi":66,"lo":36,"hiPass":58,"loPass":30,"swing":29,"freeze":29,"precip":18,"coldSnap":26},{"day":16,"date":"Oct 16","mile":855,"name":"Monticello, UT (Abajo Mtns)","campFt":7070,"highFt":8200,"terrain":"Mountain town","note":"Coldest town on the route until Colorado. Full resupply.","hi":62,"lo":35,"hiPass":58,"loPass":32,"swing":27,"freeze":35,"precip":18,"coldSnap":25},{"day":17,"date":"Oct 17","mile":915,"name":"Canyonlands rim / Lockhart Basin","campFt":5000,"highFt":6200,"terrain":"Canyon country","note":"Descent back into warm desert. Enjoy it.","hi":70,"lo":42,"hiPass":66,"loPass":38,"swing":29,"freeze":12,"precip":13,"coldSnap":31},{"day":18,"date":"Oct 18","mile":970,"name":"Moab, UT","campFt":4000,"highFt":5000,"terrain":"Red-rock desert","note":"Warmest nights since St. George. Best place for a rest day.","hi":72,"lo":43,"hiPass":68,"loPass":40,"swing":29,"freeze":8,"precip":13,"coldSnap":33},{"day":19,"date":"Oct 19","mile":1020,"name":"La Sal Mtns / Paradox Valley","campFt":7000,"highFt":8800,"terrain":"Montane forest","note":"Climb out of Moab into aspen. Nights turn hard again.","hi":62,"lo":32,"hiPass":55,"loPass":26,"swing":30,"freeze":52,"precip":19,"coldSnap":21},{"day":20,"date":"Oct 20","mile":1075,"name":"Nucla / Naturita, CO","campFt":5400,"highFt":7000,"terrain":"High desert","note":"Last low-elevation night of the trip. Stage for the San Juans.","hi":66,"lo":35,"hiPass":60,"loPass":30,"swing":31,"freeze":35,"precip":14,"coldSnap":25},{"day":21,"date":"Oct 21","mile":1125,"name":"Norwood, CO","campFt":7000,"highFt":7600,"terrain":"Wheat mesa","note":"Wind-exposed mesa. Weather now driven by Rockies, not desert.","hi":60,"lo":28,"hiPass":57,"loPass":26,"swing":32,"freeze":71,"precip":19,"coldSnap":17},{"day":22,"date":"Oct 22","mile":1165,"name":"Telluride / Lizard Head Pass","campFt":8750,"highFt":10222,"terrain":"Subalpine","note":"COLD SPIKE #2 — the trip's crux. Late Oct at 10,000+ ft.","hi":54,"lo":22,"hiPass":49,"loPass":18,"swing":32,"freeze":89,"precip":25,"coldSnap":12},{"day":23,"date":"Oct 23","mile":1210,"name":"Rico → Durango, CO — finish","campFt":6512,"highFt":9000,"terrain":"Montane → valley","note":"Long descent to the Animas. Durango is a notorious cold sink at dawn.","hi":62,"lo":26,"hiPass":54,"loPass":19,"swing":36,"freeze":75,"precip":18,"coldSnap":16}];
 
 /* ---------- theme ---------- */
 const C = {ink:'#e8edf3',dim:'#94a3b3',faint:'#5e6b7a',line:'#2a323c',
@@ -310,6 +483,153 @@ document.getElementById('tb').innerHTML = D.map(d=>`
     <td class="n" style="color:var(--faint)">${d.precip}%</td>
   </tr>`).join('');
 
+/* ================= SEASONAL ACCESS ================= */
+const SEASON = [{"from":800,"to":970,"name":"Babylon Fire burn scar — Bears Ears / Elk Ridge / Needles","type":"current","status":"verify","window":"Closure order ran 28 Jun – 31 Aug 2026","detail":"Utah's first megafire in eight years: 107,189 acres, 95% contained in early August 2026. The closure covered the entire Monticello Ranger District, Dark Canyon Wilderness, Bears Ears NM, and all BLM/FS land south of Hwy 211, west of Hwy 191 and north of Hwy 95 — which is precisely the Natural Bridges → Elk Ridge → Monticello section. Canyonlands' Needles District closed too. THE ORDER WAS WRITTEN TO EXPIRE 31 AUG, BUT BURN-AREA CLOSURES ARE ROUTINELY EXTENDED for hazard trees and road damage, and reopening is not the same as safe: fresh burn scars produce debris flows and flash floods in rain far beyond the burn itself, springs and stock tanks run with ash, and shade disappears. If you are riding this in 2026 or 2027, this is the first phone call you make, not the last.","src":"Manti-La Sal NF closure order","url":"https://www.fs.usda.gov/r04/manti-lasal/alerts/babylon-wildfire-closure-order"},{"from":855,"to":1210,"name":"Utah general deer rifle hunt","type":"current","status":"open","window":"17–25 Oct 2026 (early units 7–11 Oct)","detail":"The nine-day general any-legal-weapon season lands squarely on the Monticello → Moab → La Sal stretch of a 1 Oct departure. Public land stays open and you are not obliged to do anything, but dispersed camping gets crowded and noisy, forest roads carry far more traffic, and blaze orange stops being optional. Colorado's seasons open in October too. Easiest fix is to be through the Abajos and La Sals before the 17th, or to sleep in towns through that window.","src":"Utah DWR season dates","url":"https://www.eregulations.com/utah/hunting/hunting-seasons-and-dates"},{"from":340,"to":345,"name":"Brian Head village","type":"annual","status":"closed","window":"Largely shut between summer and ski seasons","detail":"October falls in the shoulder gap: most of the village is closed, and it reliably fails as a resupply. Already tiered 'minimal' in the resupply table — this is why.","src":"Visit Cedar City / Brian Head","url":"https://visitcedarcity.com/"},{"from":340,"to":360,"name":"Cedar Breaks NM — SR-148 rim road","type":"annual","status":"marginal","window":"Typically closed mid-Nov → late May","detail":"The rim road is gated for winter once snowpack is sufficient — usually mid-November, so an early-October crossing is normally fine. But 'sufficient snowpack' is a judgement call, not a date, and this is 10,300 ft. An early storm can shut it with no notice. SR-143, the north/east approach, is plowed in daylight hours and is your fallback.","src":"NPS Cedar Breaks winter access","url":"https://www.nps.gov/cebr/planyourvisit/winter-access.htm"},{"from":450,"to":600,"name":"Grand Staircase clay roads","type":"annual","status":"marginal","window":"Not seasonal — condition-dependent year-round","detail":"Included because riders keep reading 'open' as 'passable'. The bentonite clay through the Grand Staircase and again around Paradox turns to unrideable, unpushable glue within minutes of rain and stays that way for a day or more after. No gate will warn you. Precipitation odds here run 13–19% per day in October.","src":"BLM Grand Staircase-Escalante","url":"https://www.blm.gov/programs/national-conservation-lands/utah/grand-staircase-escalante"},{"from":800,"to":855,"name":"Elk Ridge Road (FR-088)","type":"annual","status":"marginal","window":"Generally passable Apr → Nov; best Jun → Oct","detail":"Single-lane dirt along a 9,000 ft spine. It is at the very end of its usable window in late October and the first real snow ends it — there is no plowing and no gate schedule to rely on. Combined with the Babylon burn scar, this is the least certain link on the whole route. Have the Hwy 95 pavement bail-out mapped before you commit. Monticello Ranger District: (435) 636-3340.","src":"Manti-La Sal NF — Elk Ridge","url":"https://www.fs.usda.gov/r04/manti-lasal/recreation/elk-ridge-recreation-area"},{"from":830,"to":835,"name":"Natural Bridges NM — potable water","type":"annual","status":"marginal","window":"Shut off after the first hard freeze","detail":"The visitor-centre spigot is the only water in a long dry stretch, and it is turned off once freezing becomes routine — which the weather model puts at roughly 29% probability on the night you would arrive, rising fast after. Call before you rely on it: (435) 692-1234.","src":"NPS Natural Bridges","url":"https://www.nps.gov/nabr/planyourvisit/conditions.htm"},{"from":215,"to":250,"name":"Zion — Kolob Terrace Road / Lava Point","type":"annual","status":"open","window":"Snow closure possible Nov → May","detail":"Only the lower ~14 miles are plowed; above that it closes with snow, usually from November. Lava Point Campground runs May through September or October depending on snow. Fine in early October in a normal year, but it is the first thing to shut in a cold one.","src":"NPS Zion conditions","url":"https://www.nps.gov/zion/planyourvisit/conditions.htm"},{"from":625,"to":700,"name":"Boulder Mountain — Hwy 12 and the dirt alternates","type":"annual","status":"open","window":"Hwy 12 plowed year-round","detail":"The paved 9,600 ft crossing stays open all year, though it ices and can be briefly impassable after a storm. The unpaved alternates on the Aquarius Plateau — North Slope, Deer Creek, Pleasant Creek — are a different matter and gate or become impassable with the first real snow. Ride the pass in the middle of the day, not at dawn.","src":"Scenic Byway 12","url":"https://www.visitutah.com/articles/the-all-american-road-scenic-byway-12"},{"from":1020,"to":1075,"name":"La Sal Mountains — Geyser Pass Road","type":"annual","status":"open","window":"Closed 15 Dec → 15 May","detail":"Open through October. The Loop Road is plowed to the Geyser Pass turn-off in winter and less often to Castle Valley. Not a seasonal risk for an October ride, but at 9,600 ft it holds early snow, and multi-year construction on the Loop Road has produced intermittent daytime closures — worth a check.","src":"Manti-La Sal NF — Geyser Pass","url":"https://www.fs.usda.gov/r04/manti-lasal/recreation/geyser-pass-trailhead"},{"from":1165,"to":1210,"name":"Lizard Head Pass — Hwy 145","type":"annual","status":"open","window":"Plowed and open year-round","detail":"The pavement over the pass is maintained all winter, so it is not a seasonal closure — but it is 10,222 ft on ~22 October with the highest freeze and precipitation odds on the route. It closes during storms, not for the season. CDOT COtrip is the live source.","src":"CDOT road conditions","url":"https://www.cotrip.org/"}];
+const ST = {
+  verify:  ['Verify before you go','#f08282','rgba(224,83,83,.09)','#e05353'],
+  closed:  ['Closed in October','#d69a6b','rgba(201,122,60,.07)','#c97a3c'],
+  marginal:['End of its window','#e0be55','rgba(201,162,39,.06)','#c9a227'],
+  open:    ['Expected open','#77dfa0','transparent','#2a323c'],
+};
+document.getElementById('access-list').innerHTML = SEASON.map(s=>{
+  const [label,col,bg,bar] = ST[s.status];
+  const yr = s.type==='current'
+    ? '<span class="tag t-crit2" style="margin-right:7px">2026-specific</span>' : '';
+  return `<div class="gapcard" style="background:${bg};border-left-color:${bar}">
+    <div class="gaphead">
+      <span class="gaproute">${yr}${s.name}</span>
+      <span class="gapnum">mi ${s.from}–${s.to} · <b style="color:${col}">${label}</b></span>
+    </div>
+    <p style="margin-bottom:6px"><b style="color:var(--ink)">${s.window}</b></p>
+    <p>${s.detail}</p>
+    <p style="margin-top:7px"><a href="${s.url}" style="color:#7ec0ef">${s.src} →</a></p>
+  </div>`;
+}).join('');
+
+/* ================= RESUPPLY ================= */
+const RS = {"stops":[{"mile":0,"name":"Las Vegas","state":"NV","off":0.0,"tier":"full","water":"town","conf":"high","services":"Supermarkets · bike shops · post office · airport","note":"Western terminus. Last true metro until Durango. Buy anything specialised here.","maxDays":6,"detour":0.0},{"mile":55,"name":"Mountain Springs / Hwy 160","state":"NV","off":1.0,"tier":"minimal","water":"none","conf":"low","services":"Seasonal roadside cafe/bar","note":"Do not count on it. Treat Las Vegas → Mesquite as fully self-supported.","maxDays":0.5,"detour":2.0},{"mile":120,"name":"Mesquite","state":"NV","off":2.0,"tier":"full","water":"town","conf":"high","services":"Supermarkets · pharmacy · motels · post office","note":"Full rebuild before the climb into Utah. Also last cheap groceries for a while.","maxDays":6,"detour":4.0},{"mile":180,"name":"St. George","state":"UT","off":0.0,"tier":"full","water":"town","conf":"high","services":"Supermarkets · outdoor shops · bike shops · post office","note":"Best gear town on the western half. Sort cold-weather kit HERE, not Cedar City.","maxDays":6,"detour":0.0},{"mile":235,"name":"Springdale / Rockville","state":"UT","off":1.5,"tier":"moderate","water":"town","conf":"med","services":"Tourist market · cafes · outfitter","note":"Zion gateway. Small selection at resort prices. Fine for a top-up, poor for a rebuild.","maxDays":3,"detour":3.0},{"mile":295,"name":"Cedar City","state":"UT","off":0.0,"tier":"full","water":"town","conf":"high","services":"Supermarkets · outdoor shop · bike shop · post office · bus","note":"THE HINGE. Last full-service town before the high plateaus. Freezing nights start tomorrow — this is the mail-drop and warm-gear decision point.","maxDays":6,"detour":0.0},{"mile":340,"name":"Brian Head","state":"UT","off":2.0,"tier":"minimal","water":"town","conf":"low","services":"Resort village, largely seasonal","note":"Between summer and ski season much of it is shut. Assume closed in October.","maxDays":0.5,"detour":4.0},{"mile":400,"name":"Panguitch","state":"UT","off":0.0,"tier":"good","water":"town","conf":"high","services":"Grocery · cafes · motels · post office","note":"First reliable resupply since Cedar City. Also a notorious cold sink — a motel here is a legitimate way to skip a 20°F night.","maxDays":4,"detour":0.0},{"mile":450,"name":"Bryce Canyon / Ruby's Inn","state":"UT","off":1.0,"tier":"moderate","water":"town","conf":"med","services":"General store · restaurants · showers","note":"Big general store, tourist pricing. Open later in the season than most nearby options.","maxDays":3,"detour":2.0},{"mile":510,"name":"Cannonville / Henrieville","state":"UT","off":0.5,"tier":"minimal","water":"town","conf":"low","services":"Very small store, irregular hours","note":"Two tiny settlements. Snacks and drinks at best. Plan through, not around, them.","maxDays":0.5,"detour":1.0},{"mile":570,"name":"Escalante","state":"UT","off":0.0,"tier":"good","water":"town","conf":"high","services":"Grocery · outfitter · cafes · post office · lodging","note":"START OF THE BIG CARRY. Last good grocery for ~285 mi. Post office here is the smart mail-drop for the eastern half.","maxDays":4,"detour":0.0},{"mile":625,"name":"Boulder","state":"UT","off":0.0,"tier":"minimal","water":"town","conf":"med","services":"One small store · 1–2 restaurants","note":"Tiny and seasonal-ish. A meal and a partial top-up, not a resupply.","maxDays":0.5,"detour":0.0},{"mile":680,"name":"Torrey / Capitol Reef","state":"UT","off":9.0,"tier":"moderate","water":"town","conf":"med","services":"Small grocery · restaurants · lodging","note":"~9 mi off route and worth it. Best food between Escalante and Blanding, and the last one before the Hwy 95 void.","maxDays":3,"detour":18.0},{"mile":745,"name":"Hanksville","state":"UT","off":0.0,"tier":"moderate","water":"town","conf":"high","services":"Two small markets · gas · cafe · lodging","note":"CRITICAL. Load 3+ days here. Next food is Blanding, 110 mi east, and there is genuinely nothing in between.","maxDays":3,"detour":0.0},{"mile":800,"name":"Hite","state":"UT","off":0.0,"tier":"none","water":"seasonal","conf":"high","services":"CLOSED — store, fuel, ranger station, marina","note":"Services suspended since 2021, 'until further notice' (NPS). Older route notes and trip reports still list it as a stop. THEY ARE WRONG. Plan zero here.","maxDays":0,"detour":0.0},{"mile":830,"name":"Natural Bridges NM","state":"UT","off":0.5,"tier":"none","water":"seasonal","conf":"med","services":"Visitor centre · vault toilets · no food sold","note":"Potable water at the visitor centre in season, but it can be shut off after the first hard freeze. Call ahead: (435) 692-1234.","maxDays":0,"detour":1.0},{"mile":855,"name":"Blanding","state":"UT","off":14.0,"tier":"good","water":"town","conf":"med","services":"Supermarket · pharmacy · motels · post office","note":"~14 mi off route. The detour is how most riders break the Hwy 95 carry. Skip it only if you left Hanksville with 4 full days.","maxDays":4,"detour":28.0},{"mile":915,"name":"Monticello","state":"UT","off":0.0,"tier":"good","water":"town","conf":"high","services":"Grocery · cafes · motels · post office · laundry","note":"Coldest town on the route (7,070 ft). Full resupply and a warm bed both available.","maxDays":4,"detour":0.0},{"mile":1020,"name":"Moab","state":"UT","off":0.0,"tier":"full","water":"town","conf":"high","services":"Supermarkets · multiple bike shops · outfitters · post office","note":"Best bike shops on the entire route. Fix everything here — nothing comparable until Durango. Natural rest day and last warm night.","maxDays":6,"detour":0.0},{"mile":1075,"name":"La Sal / Paradox","state":"UT/CO","off":3.0,"tier":"minimal","water":"scarce","conf":"low","services":"Tiny store, unreliable hours","note":"Effectively nothing. Ride Moab → Naturita self-supported.","maxDays":0.5,"detour":6.0},{"mile":1125,"name":"Naturita / Nucla","state":"CO","off":1.0,"tier":"moderate","water":"town","conf":"high","services":"Small market · gas-and-deli · cafes","note":"Twin towns ~2 mi apart. Between them you can eat well and restock adequately. Last low-elevation night.","maxDays":3,"detour":2.0},{"mile":1165,"name":"Norwood","state":"CO","off":0.0,"tier":"moderate","water":"town","conf":"med","services":"Small grocery/cafe · restaurant","note":"Load 2 days for the San Juans. Weather here is Rocky Mountain, not desert.","maxDays":3,"detour":0.0},{"mile":1185,"name":"Telluride","state":"CO","off":13.0,"tier":"full","water":"town","conf":"med","services":"Supermarket · bike shops · gear shops · medical","note":"~13 mi off route and a big descent you must climb back out of. Worth it only if you need a bike shop or are bailing from bad weather.","maxDays":6,"detour":26.0},{"mile":1195,"name":"Rico","state":"CO","off":0.0,"tier":"minimal","water":"town","conf":"med","services":"Cafe · very small store","note":"A hot meal on the cold side of Lizard Head Pass. Do not plan food around it.","maxDays":0.5,"detour":0.0},{"mile":1210,"name":"Durango","state":"CO","off":0.0,"tier":"full","water":"town","conf":"high","services":"Everything · bike shops · train · airport","note":"Eastern terminus.","maxDays":6,"detour":0.0}],"gaps":[{"from":"Las Vegas","to":"Mesquite","miles":120,"days":2.2,"detour":4.0,"dead":[],"dry":false,"skipped":["Mountain Springs / Hwy 160"],"score":128,"severity":"watch"},{"from":"Mesquite","to":"St. George","miles":60,"days":1.1,"detour":0.0,"dead":[],"dry":false,"skipped":[],"score":60,"severity":"ok"},{"from":"St. George","to":"Springdale / Rockville","miles":55,"days":1.0,"detour":3.0,"dead":[],"dry":false,"skipped":[],"score":61,"severity":"ok"},{"from":"Springdale / Rockville","to":"Cedar City","miles":60,"days":1.1,"detour":0.0,"dead":[],"dry":false,"skipped":[],"score":60,"severity":"ok"},{"from":"Cedar City","to":"Panguitch","miles":105,"days":1.9,"detour":0.0,"dead":[],"dry":false,"skipped":["Brian Head"],"score":105,"severity":"watch"},{"from":"Panguitch","to":"Bryce Canyon / Ruby's Inn","miles":50,"days":0.9,"detour":2.0,"dead":[],"dry":false,"skipped":[],"score":54,"severity":"ok"},{"from":"Bryce Canyon / Ruby's Inn","to":"Escalante","miles":120,"days":2.2,"detour":0.0,"dead":[],"dry":false,"skipped":["Cannonville / Henrieville"],"score":120,"severity":"watch"},{"from":"Escalante","to":"Torrey / Capitol Reef","miles":110,"days":2.0,"detour":18.0,"dead":[],"dry":false,"skipped":["Boulder"],"score":146,"severity":"watch"},{"from":"Torrey / Capitol Reef","to":"Hanksville","miles":65,"days":1.2,"detour":0.0,"dead":[],"dry":false,"skipped":[],"score":65,"severity":"ok"},{"from":"Hanksville","to":"Blanding","miles":110,"days":2.0,"detour":28.0,"dead":["Hite","Natural Bridges NM"],"dry":true,"skipped":["Hite","Natural Bridges NM"],"score":221,"severity":"critical"},{"from":"Blanding","to":"Monticello","miles":60,"days":1.1,"detour":0.0,"dead":[],"dry":false,"skipped":[],"score":60,"severity":"ok"},{"from":"Monticello","to":"Moab","miles":105,"days":1.9,"detour":0.0,"dead":[],"dry":false,"skipped":[],"score":105,"severity":"watch"},{"from":"Moab","to":"Naturita / Nucla","miles":105,"days":1.9,"detour":2.0,"dead":[],"dry":true,"skipped":["La Sal / Paradox"],"score":134,"severity":"watch"},{"from":"Naturita / Nucla","to":"Norwood","miles":40,"days":0.7,"detour":0.0,"dead":[],"dry":false,"skipped":[],"score":40,"severity":"ok"},{"from":"Norwood","to":"Telluride","miles":20,"days":0.4,"detour":26.0,"dead":[],"dry":false,"skipped":[],"score":72,"severity":"ok"},{"from":"Telluride","to":"Durango","miles":25,"days":0.5,"detour":0.0,"dead":[],"dry":false,"skipped":["Rico"],"score":25,"severity":"ok"}]}, STOPS = RS.stops, GAPS = RS.gaps;
+const TOTAL = 1210;
+const TIER_LABEL = {full:'Full',good:'Good',moderate:'Moderate',minimal:'Minimal',none:'None'};
+
+/* route strip — dots positioned by true route mile */
+document.getElementById('strip').innerHTML =
+  '<div class="rail"></div>' +
+  STOPS.map(s=>{
+    const x = (s.mile/TOTAL*100).toFixed(2)+'%';
+    const off = s.off>0;
+    const stem = off ? `<div class="stem" style="left:${x};top:30px;height:16px"></div>` : '';
+    // label only the stops worth naming at this scale
+    const big = ['full','good'].includes(s.tier) || s.tier==='none';
+    const lab = big ? `<div class="slab" style="left:${x}">${s.name.split(' /')[0]}</div>` : '';
+    return stem +
+      `<div class="dot ${s.tier}${off?' off':''}" style="left:${x}"
+         title="Mile ${s.mile} · ${s.name} · ${TIER_LABEL[s.tier]}${off?' · '+s.off+' mi off route':''}"></div>`
+      + lab;
+  }).join('');
+
+/* gap cards, worst first */
+const sevWord = {critical:'Critical',watch:'Plan for it',ok:''};
+document.getElementById('gaps').innerHTML = GAPS
+  .filter(g=>g.severity!=='ok')
+  .sort((a,b)=>b.score-a.score)
+  .map(g=>{
+    const bits = [];
+    if(g.dead.length) bits.push(`<b style="color:#f08282">${g.dead.join(' and ')} sell no food.</b>`);
+    else if(g.skipped.length) bits.push(`Only ${g.skipped.join(', ')} in between — treat as nothing.`);
+    if(g.detour>0) bits.push(`Reaching ${g.to} costs an extra ${g.detour} mi round trip.`);
+    if(g.dry) bits.push('Water is seasonal or scarce through here.');
+    return `<div class="gapcard ${g.severity}">
+      <div class="gaphead">
+        <span class="gaproute">${g.from} → ${g.to}</span>
+        <span class="gapnum">${g.miles} mi · ~${g.days} days riding${
+          sevWord[g.severity]?' · <b style="color:'+(g.severity==='critical'?'#f08282':'#e0be55')+'">'+sevWord[g.severity]+'</b>':''}</span>
+      </div>
+      <p>${bits.join(' ')}</p></div>`;
+  }).join('');
+
+/* stop table */
+document.getElementById('rtb').innerHTML = STOPS.map(s=>`
+  <tr>
+    <td class="n" style="color:var(--dim)">${s.mile}</td>
+    <td><span class="lm">${s.name}</span><span class="conf">${s.state}</span>
+        ${s.conf==='low'?'<span class="conf">est.</span>':''}
+        <span class="nt">${s.note}</span></td>
+    <td class="n">${s.off>0?s.off+' mi':'—'}</td>
+    <td><span class="tag t-${s.tier}">${TIER_LABEL[s.tier]}</span></td>
+    <td class="n" style="color:var(--faint)">${s.maxDays?s.maxDays:'—'}</td>
+    <td style="color:var(--faint);font-size:12px">${s.services}</td>
+  </tr>`).join('');
+
+/* ================= PACKING ================= */
+const PK = {"Sleep system":[{"item":"Sleeping bag / quilt","spec":"15°F rated, 800+ fill down","oz":30,"pri":"critical","why":"Model's coldest 10th-percentile night is 12°F at Lizard Head. A 30°F bag leaves you cold on roughly a third of the nights on this route."},{"item":"Sleeping pad","spec":"Insulated, R-value 4.5+","oz":15,"pri":"critical","why":"Ground conduction, not air temperature, is what actually ends a night. An R-2 summer pad on frozen ground at 10,000 ft defeats any bag you pair it with."},{"item":"Pillow / stuff sack","spec":"Inflatable or clothes bag","oz":3,"pri":"comfort","why":"3 oz for real sleep across 23 nights is one of the best trades on the list."}],"Shelter":[{"item":"Tent — recommended","spec":"Freestanding/semi 1P double-wall, 3-season","oz":40,"pri":"critical","why":"THE PICK. Slickrock and frozen ground won't hold stakes, and double-wall manages the condensation you get from big diurnal swings. Worth ~14 oz over a tarp."},{"item":"Tarp + bivy — alternative","spec":"Silnylon/DCF tarp + water-resistant bivy","oz":22,"pri":"optional","why":"Lightest real option and fine for the desert half. On the San Juan nights it is a genuine sufferfest, and it pitches badly on slickrock."},{"item":"Mid / pyramid — alternative","spec":"Single-wall, trekking-pole or bar pitched","oz":26,"pri":"optional","why":"Good compromise: near-tarp weight, real snow shedding. Needs anchors you may not find."},{"item":"Groundsheet","spec":"Polycryo or DCF, cut to size","oz":2,"pri":"recommended","why":"Slickrock and cryptobiotic-adjacent grit shred floors."}],"Worn / riding":[{"item":"Bib shorts","spec":"Chamois, 1 pair","oz":7,"pri":"critical","why":"One pair. Wash and dry them — the desert air does this in an hour."},{"item":"Merino T or sun hoody","spec":"150–190 g/m² merino or synthetic hoody","oz":6,"pri":"critical","why":"Sun hoody wins on the Mojave days; UV index is still 3–6 in October."},{"item":"Lightweight gloves","spec":"Full-finger, thin","oz":2,"pri":"recommended","why":"Dawn starts are near freezing for two-thirds of the trip."},{"item":"Cycling shoes","spec":"Stiff sole, drains and dries","oz":0,"pri":"critical","why":"Worn, not carried. Waterproof shoes stay wet once flooded — pick drainage."}],"Insulation":[{"item":"Puffy jacket","spec":"Down or synthetic, 800fp, hooded","oz":11,"pri":"critical","why":"Worn in camp every night from Oct 6 onward. Hooded is not optional at 10,000 ft."},{"item":"Fleece / grid mid-layer","spec":"100–150 weight grid fleece","oz":8,"pri":"critical","why":"The layer you actually climb in. Down soaks through with sweat; fleece doesn't."},{"item":"Merino base, long sleeve","spec":"200 g/m², sleep-clean","oz":7,"pri":"critical","why":"Doubles as sleepwear. Keeping it dry is what makes the 15°F bag hit its rating."},{"item":"Thermal tights / long johns","spec":"200 g/m² merino or fleece","oz":6,"pri":"critical","why":"Legs get ignored and then you're awake at 3am."},{"item":"Insulated booties or spare socks","spec":"Down booties, or 2 thick wool pairs","oz":4,"pri":"comfort","why":"Cold feet are the single most common reason people don't sleep in the cold."},{"item":"Warm hat + buff","spec":"Merino beanie, neck gaiter","oz":3,"pri":"critical","why":"2 oz that buys roughly 5°F of effective bag rating."},{"item":"Insulated gloves","spec":"Softshell or lobster, wind-resistant","oz":4,"pri":"critical","why":"Descending from Cedar Breaks or Lizard Head at 25°F is the coldest you will be."}],"Wind & wet":[{"item":"Rain jacket","spec":"2.5-layer, pit zips, hood","oz":8,"pri":"critical","why":"Precip chance peaks at only ~26%, but at 10,000 ft in late October that's snow."},{"item":"Rain pants or wind pants","spec":"Lightweight, full or 3/4 zip","oz":5,"pri":"recommended","why":"Wind pants cover 90% of the need at half the weight. Full rain pants if you're riding late October."},{"item":"Waterproof socks","spec":"Knee or ankle length","oz":3,"pri":"comfort","why":"Cheaper and lighter than solving wet feet any other way."}],"Water":[{"item":"Capacity","spec":"6 L total — 3 bottles + 3 L bladder/dromedary","oz":8,"pri":"critical","why":"Longest documented dry stretch is ~60 mi. Six litres covers that plus a dry camp with a margin for a stock tank being empty."},{"item":"Filter","spec":"Squeeze or inline hollow-fibre","oz":4,"pri":"critical","why":"SLEEP WITH IT from Oct 6 onward. One freeze cracks the fibres invisibly and it then passes everything."},{"item":"Chemical backup","spec":"Tablets or drops","oz":1,"pri":"critical","why":"Weighs nothing and covers a failed or frozen filter."},{"item":"Sediment pre-filter","spec":"Bandana or coffee filter","oz":1,"pri":"recommended","why":"Desert stock tanks and silty potholes will clog a filter in a day without one."}],"Cooking":[{"item":"Stove — recommended","spec":"Upright canister, ~3 oz","oz":3,"pri":"recommended","why":"THE PICK. Simple, fast, and October nights aren't cold enough to cripple isopropane if you sleep with the canister. Fuel is stocked in Moab, Escalante, Blanding."},{"item":"Stove — alternative","spec":"Alcohol or cold-soak","oz":1,"pri":"optional","why":"Lightest. But alcohol is slow and inefficient in cold and wind, and a hot dinner does real work for morale at 25°F."},{"item":"Fuel","spec":"1 × 230 g canister, swap at Moab","oz":14,"pri":"recommended","why":"Cold burns fuel faster. Buy the big one; small ones are unreliably stocked."},{"item":"Pot + spork","spec":"750 ml titanium, lid","oz":5,"pri":"recommended","why":"750 ml so you can rehydrate and drink from the same vessel."},{"item":"Insulated mug","spec":"500 ml, lidded","oz":4,"pri":"comfort","why":"Underrated. A hot drink before you leave the bag at 20°F changes the whole morning."}],"Food carry":[{"item":"Bag capacity","spec":"Room for 4 full days","oz":0,"pri":"critical","why":"Sized by the Hanksville → Blanding carry: 110 mi with Hite closed. Most riders are short here, not on water."},{"item":"Odour-proof / critter bag","spec":"Roll-top dry bag","oz":2,"pri":"recommended","why":"Ringtails and mice at established desert camps, not bears, are the problem."}],"Electronics":[{"item":"Front light","spec":"300+ lumen, USB","oz":5,"pri":"critical","why":"Daylight drops from 11h50m to 10h50m across the trip, and the hardest days are last."},{"item":"Rear light + headlamp","spec":"Blinky + 200 lm headlamp","oz":4,"pri":"critical","why":"Highway 95 and Hwy 145 have real traffic and no shoulder."},{"item":"Power bank","spec":"10,000 mAh","oz":7,"pri":"critical","why":"Cold roughly halves usable battery. 5–6 days between reliable outlets on the Escalante → Blanding stretch."},{"item":"GPS / phone + offline maps","spec":"Downloaded before you leave town","oz":0,"pri":"critical","why":"No cell service for hours at a time on Hwy 95."},{"item":"Satellite messenger","spec":"Two-way with SOS","oz":4,"pri":"critical","why":"Not optional here. Long unpaved stretches, no traffic, no signal, freezing nights."}],"Repair":[{"item":"Tubes + plugs + patches","spec":"2 tubes, tubeless plugs, patch kit","oz":10,"pri":"critical","why":"Goatheads west of St. George, slickrock cuts east of it."},{"item":"Pump + tyre boot","spec":"Frame pump, boot or dollar bill","oz":7,"pri":"critical","why":""},{"item":"Multi-tool + chain tool","spec":"With quick links","oz":6,"pri":"critical","why":""},{"item":"Spare derailleur hanger","spec":"Bike-specific","oz":1,"pri":"critical","why":"The one part no shop between Moab and Durango will have for your frame."},{"item":"Chain lube","spec":"Dry/wax for dust","oz":2,"pri":"recommended","why":"Colorado Plateau dust destroys wet lube in a day."},{"item":"Spare brake pads","spec":"One set","oz":2,"pri":"recommended","why":"123,000 ft of climbing means 123,000 ft of descending."},{"item":"Zip ties, tape, voile strap","spec":"Assorted","oz":3,"pri":"recommended","why":""}],"Health":[{"item":"First aid kit","spec":"Trimmed personal kit","oz":6,"pri":"critical","why":""},{"item":"Sunscreen + SPF lip balm","spec":"High SPF, small","oz":3,"pri":"critical","why":"Snow and slickrock both reflect. UV stays meaningful all month."},{"item":"Chamois cream","spec":"Small tube","oz":3,"pri":"recommended","why":"23 consecutive days. Do not economise here."},{"item":"Electrolytes","spec":"Tabs or powder","oz":3,"pri":"recommended","why":"Dry cold hides dehydration as effectively as heat does."},{"item":"Toothbrush / meds / ID / cash","spec":"Personal","oz":5,"pri":"critical","why":"Carry cash — small-town card readers go down and some places are cash-only."}]};
+const PRI_LABEL = {critical:'Critical',recommended:'Recommended',comfort:'Comfort',optional:'Alternative'};
+const PRI_TAG   = {critical:'t-crit2',recommended:'t-rec',comfort:'t-com',optional:'t-opt'};
+const FILTERS = {
+  all:  p=>true,
+  crit: p=>p==='critical',
+  light:p=>p==='critical'||p==='recommended',
+};
+let pmode='all';
+
+function renderPack(){
+  const keep = FILTERS[pmode];
+  document.getElementById('packlist').innerHTML = Object.entries(PK).map(([cat,items])=>{
+    const rows = items.filter(i=>keep(i.pri));
+    if(!rows.length) return '';
+    const oz = rows.filter(i=>i.pri!=='optional').reduce((a,i)=>a+i.oz,0);
+    return `<h3>${cat}<span class="conf">${(oz/16).toFixed(1)} lb</span></h3>
+      <div class="scroll"><table>
+        <thead><tr><th>Item</th><th>Spec</th><th class="n">oz</th><th>Priority</th></tr></thead>
+        <tbody>${rows.map(i=>`
+          <tr>
+            <td><span class="lm">${i.item}</span>${i.why?`<span class="why">${i.why}</span>`:''}</td>
+            <td style="color:var(--dim);font-size:12.5px">${i.spec}</td>
+            <td class="n" style="color:var(--faint)">${i.oz||'—'}</td>
+            <td><span class="tag ${PRI_TAG[i.pri]}">${PRI_LABEL[i.pri]}</span></td>
+          </tr>`).join('')}</tbody>
+      </table></div>`;
+  }).join('');
+
+  const all = Object.values(PK).flat();
+  const sum = f => all.filter(f).reduce((a,i)=>a+i.oz,0)/16;
+  document.getElementById('wsum').innerHTML = [
+    [sum(i=>i.pri==='critical').toFixed(1)+' lb','Critical only'],
+    [sum(i=>i.pri==='critical'||i.pri==='recommended').toFixed(1)+' lb','Light but not miserable'],
+    [sum(i=>i.pri!=='optional').toFixed(1)+' lb','Everything incl. comfort'],
+    ['12°F','Coldest design night'],
+    ['6 L','Water capacity'],
+    ['4 days','Max food carry'],
+  ].map(s=>`<div><div class="v">${s[0]}</div><div class="k">${s[1]}</div></div>`).join('');
+  ['All','Crit','Light'].forEach((k,n)=>
+    document.getElementById('p'+k).classList.toggle('on', pmode===['all','crit','light'][n]));
+}
+pAll.onclick   = ()=>{pmode='all';   renderPack();};
+pCrit.onclick  = ()=>{pmode='crit';  renderPack();};
+pLight.onclick = ()=>{pmode='light'; renderPack();};
+renderPack();
+
+document.getElementById('food').innerHTML = [
+ `<b>Size your food bags for four days, not two.</b> Hanksville → Blanding is the constraint:
+   110 miles, Hite closed, Natural Bridges sells nothing. Most riders under-pack here and
+   over-pack water. If your bags can't hold four days, the route decides your itinerary
+   for you.`,
+ `<b>Escalante and Hanksville are the two loads that matter.</b> Escalante is the last good
+   grocery for ~285 miles, and Hanksville is the last anything before the Highway 95 void.
+   Everything between them — Boulder, Torrey — tops you up but won't rebuild you.`,
+ `<b>Decide the Blanding detour before you leave Hanksville, not during.</b> It's 14 miles off
+   route each way. Take it and the carry is 110 miles of food; skip it and you're going
+   Hanksville → Monticello, 170 miles, on what you're carrying.`,
+ `<b>Two towns are worth a motel, for weather rather than comfort.</b> Panguitch (Oct 8, 30°F
+   low, cold-air sink) and Monticello (Oct 16, 7,070 ft). Both have full resupply, so a
+   room, a shower and a dry sleeping bag cost you no extra riding.`,
+ `<b>Cold changes what you should be buying.</b> From Cedar City east you're eating in the dark
+   at 30°F. Weight per calorie stops being the only metric — food you can eat without cooking
+   in the wind, and one hot meal a day, matters more than it does in July.`,
+ `<b>Mail drops work at Escalante and Monticello.</b> Both have post offices and sit right
+   before the two hardest stretches. General Delivery holds 30 days; time it to your
+   actual pace, not your planned one.`,
+].map(s=>`<li>${s}</li>`).join('');
+
 /* ---------- narrative ---------- */
 document.getElementById('insights').innerHTML = [
  `<b>This is not a warming trend — it's a sawtooth.</b> The route crosses two cold spikes:
@@ -358,19 +678,51 @@ document.getElementById('foot').innerHTML =
   same distribution. Route mileage and elevation gain are from
   <a href="https://bikepackingroots.org/project/the-plateau-passage/">Bikepacking Roots</a>,
   who created and steward the Plateau Passage.<br><br>
-  <b>Known limits.</b> Daily positions assume a steady 60 mi/day from an Oct 1 start; shift the
-  dates and the whole curve shifts with them, because late October cools fast. Wind is not
-  modeled, and on the Norwood and Grand Staircase mesas it is often the thing that decides
-  your day. Off-station high points are lapse-rate estimates, not measurements — treat
-  Cedar Breaks, Boulder Mountain, Elk Ridge and Lizard Head as ±5°F.<br><br>
+  <b>Resupply data.</b> Mileages are <b>derived, not surveyed</b> — they come from the 23-day
+  itinerary above plus known town locations, so treat them as ±10 mi and cross-check against
+  the official <a href="https://bikepackingroots.org/project/the-plateau-passage/">Bikepacking
+  Roots route guide</a> before you rely on them. Stops marked <span class="conf">est.</span>
+  are the softest. Service tiers reflect what you can realistically buy, not what a map pin
+  claims exists. Hite's closure is confirmed by the
+  <a href="https://www.nps.gov/glca/planyourvisit/hite.htm">National Park Service</a>; older
+  route notes and trip reports still list it as a resupply and are out of date. Small-town
+  hours change constantly and seasonally — <b>call ahead, and never let a single store be
+  your only plan.</b><br><br>
+  <b>Known limits.</b> Daily positions assume ~55 mi/day from an Oct 1 start; shift the dates
+  and the whole curve shifts with them, because late October cools fast. Wind is not modeled,
+  and on the Norwood and Grand Staircase mesas it is often the thing that decides your day.
+  Off-station high points are lapse-rate estimates, not measurements — treat Cedar Breaks,
+  Boulder Mountain, Elk Ridge and Lizard Head as ±5°F. Packing weights are typical retail
+  weights, not best-in-class, and exclude worn items, bags, food and water.<br><br>
   <b>Reuse.</b> Released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY
   4.0</a> — fork it, re-run it for your own dates or a different route, publish the result.
-  The generator is <code>build_data.py</code> in the <a href="https://github.com/YOUR-USERNAME/plateau-passage-weather">repository</a>.
+  The generator is <code>build_data.py</code> in the <a href="https://github.com/snmcbee-create/plateau-passage-weather">repository</a>.
   Charts by <a href="https://www.chartjs.org">Chart.js</a> (MIT), bundled for offline use.
   Corrections welcome via GitHub issue — especially from anyone who has actually ridden
   this in October.`;
 
 setMode('camp');
+
+/* ---------- nav highlight ----------
+   Last, and defensively. This is pure decoration: if it fails the page must
+   still be fully readable. An earlier version ran this before the narrative
+   blocks and threw on browsers without IntersectionObserver, silently blanking
+   the insights and the entire method footer. Never again. */
+try {
+  if (typeof IntersectionObserver === 'function') {
+    const links = [].slice.call(document.querySelectorAll('.nav a'));
+    const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) {
+          const i = secs.indexOf(e.target);
+          links.forEach((l, n) => l.classList.toggle('on', n === i));
+        }
+      });
+    }, {rootMargin:'-64px 0px -70% 0px'});
+    secs.forEach(s => s && io.observe(s));
+  }
+} catch (e) { /* decoration only — ignore */ }
 </script>
 </body>
 </html>

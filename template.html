@@ -76,8 +76,70 @@
     margin:-8px 0 22px}
   .meta a{color:#7ec0ef;text-decoration:none}
   .meta a:hover{text-decoration:underline}
+  /* sticky section nav */
+  .nav{position:sticky;top:0;z-index:30;background:rgba(15,18,22,.93);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+    margin:0 -22px 24px;padding:11px 22px;display:flex;gap:7px;flex-wrap:wrap}
+  .nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:550;
+    padding:6px 13px;border-radius:7px;border:1px solid transparent;transition:.13s}
+  .nav a:hover{color:var(--ink);background:var(--panel2)}
+  .nav a.on{color:var(--ink);background:#2b3644;border-color:#4a5768}
+  section{scroll-margin-top:64px}
+  h3{font-size:16px;margin:26px 0 12px;font-weight:620;letter-spacing:-.01em}
+  h3:first-child{margin-top:0}
+
+  /* route strip */
+  .strip{position:relative;height:96px;margin:22px 0 8px}
+  .strip .rail{position:absolute;top:44px;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,#8a5a3c,#4a6a55,#3c5a8a);border-radius:3px}
+  .dot{position:absolute;top:37px;width:13px;height:13px;border-radius:50%;
+    margin-left:-6.5px;border:2px solid var(--bg);cursor:default}
+  .dot.full{background:#4ade80} .dot.good{background:#a3d977}
+  .dot.moderate{background:#e0be55} .dot.minimal{background:#c97a3c}
+  .dot.none{background:#e05353}
+  .dot.off{top:24px;height:13px}
+  .stem{position:absolute;width:1px;background:var(--faint);margin-left:-.5px}
+  .slab{position:absolute;top:62px;font-size:10.5px;color:var(--faint);
+    transform:translateX(-50%);white-space:nowrap}
+  .legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:var(--faint);
+    margin-top:6px}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;
+    margin-right:5px;vertical-align:middle;font-style:normal}
+
+  .gapcard{background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--line)}
+  .gapcard.critical{border-left-color:#e05353;background:rgba(224,83,83,.07)}
+  .gapcard.watch{border-left-color:var(--alpine)}
+  .gaphead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    flex-wrap:wrap;margin-bottom:5px}
+  .gaproute{font-weight:620;font-size:14px}
+  .gapnum{font-size:13px;color:var(--dim);white-space:nowrap}
+  .gapcard p{margin:0;font-size:12.5px;color:var(--faint);line-height:1.55}
+
+  .t-full{background:rgba(74,222,128,.15);color:#77dfa0}
+  .t-good{background:rgba(163,217,119,.15);color:#b3e08d}
+  .t-moderate{background:rgba(224,190,85,.16);color:#e0be55}
+  .t-minimal{background:rgba(201,122,60,.18);color:#d69a6b}
+  .t-none{background:rgba(224,83,83,.2);color:#f08282}
+  .t-crit2{background:rgba(224,83,83,.16);color:#f08282}
+  .t-rec{background:rgba(125,211,252,.14);color:#9fdcfd}
+  .t-com{background:rgba(148,163,179,.14);color:var(--dim)}
+  .t-opt{background:rgba(148,163,179,.09);color:var(--faint)}
+
+  .wsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;
+    margin:4px 0 18px}
+  .wsum div{background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+    padding:11px 13px}
+  .wsum .v{font-size:19px;font-weight:650;letter-spacing:-.02em}
+  .wsum .k{font-size:11px;color:var(--faint);text-transform:uppercase;
+    letter-spacing:.05em;margin-top:2px}
+  .why{color:var(--faint);font-size:12px;display:block;margin-top:3px;max-width:520px}
+  .conf{font-size:10px;padding:1px 5px;border-radius:4px;background:#252c35;
+    color:var(--faint);margin-left:5px}
+
   @media(max-width:820px){.grid2{grid-template-columns:1fr}.chartbox{height:340px}
-    .nt{max-width:none}.scroll{overflow-x:auto}}
+    .nt{max-width:none}.scroll{overflow-x:auto}.why{max-width:none}
+    .nav{margin:0 -14px 18px;padding:9px 14px}.strip{display:none}}
 </style>
 </head>
 <body>
@@ -95,6 +157,29 @@
     <span>Save this page (⌘S / Ctrl-S) — it works with no signal</span>
   </div>
 
+  <nav class="nav">
+    <a href="#weather" class="on">Weather</a>
+    <a href="#access">Seasonal access</a>
+    <a href="#resupply">Resupply &amp; food</a>
+    <a href="#packing">Packing list</a>
+    <a href="#method">Method &amp; limits</a>
+  </nav>
+
+  <div class="warn" style="background:rgba(224,83,83,.09);border-color:rgba(224,83,83,.4);
+       border-left-color:#e05353">
+    <div class="wt" style="color:#f08282">Current conditions — checked __BUILT__</div>
+    <p><b>The Babylon Fire burned 107,189 acres across Bears Ears, Dark Canyon and the
+       Monticello Ranger District in summer 2026</b> — Utah's first megafire in eight years,
+       95% contained in early August. The closure order covered the entire Natural Bridges →
+       Elk Ridge → Monticello section of this route, plus Canyonlands' Needles District, and
+       was written to expire 31 August 2026.
+       <b>Burn-area closures are routinely extended, and reopening is not the same as safe.</b>
+       If you are riding this in 2026 or 2027, confirm access with the
+       <a href="https://www.fs.usda.gov/r04/manti-lasal/alerts/babylon-wildfire-closure-order">Manti-La Sal
+       National Forest</a> before anything else. See
+       <a href="#access">Seasonal access</a> for the rest.</p>
+  </div>
+
   <div class="warn">
     <div class="wt">Read this before you plan around it</div>
     <p>These are <b>climatological averages, not a forecast.</b> They describe a typical
@@ -108,6 +193,7 @@
 
   <div class="stats" id="stats"></div>
 
+  <section id="weather">
   <div class="card">
     <div class="head">
       <h2 style="margin-bottom:0">Temperature &amp; elevation, west to east</h2>
@@ -153,8 +239,95 @@
     </table>
     </div>
   </div>
+  </section>
 
+  <section id="access">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Seasonal access &amp; closures</h2>
+      <span class="hint">Status shown is what to expect during an <b>October</b> ride</span>
+    </div>
+    <p style="color:var(--dim);font-size:13.5px;margin:14px 0 0;max-width:800px">
+      Parts of this route are not open all year, and a few are not open every year. Two kinds
+      of thing are listed together below, because as a rider you only care whether the road
+      goes: <b style="color:var(--ink)">year-specific events</b> like fire closures and hunt
+      seasons, and <b style="color:var(--ink)">recurring seasonal windows</b>. Every entry
+      links to the managing agency — <b style="color:var(--ink)">check the agency, not this
+      page</b>, which is a snapshot and will go stale.</p>
+    <div id="access-list" style="margin-top:18px"></div>
+  </div>
+  </section>
+
+  <section id="resupply">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Resupply &amp; food management</h2>
+      <span class="hint">25 stops, west → east · dot colour = what you can actually buy</span>
+    </div>
+
+    <div class="strip" id="strip"></div>
+    <div class="legend">
+      <span><i style="background:#4ade80"></i>Full — rebuild everything</span>
+      <span><i style="background:#a3d977"></i>Good — real grocery</span>
+      <span><i style="background:#e0be55"></i>Moderate — calories, no choice</span>
+      <span><i style="background:#c97a3c"></i>Minimal — a snack, assume nothing</span>
+      <span><i style="background:#e05353"></i>None — no food sold</span>
+      <span style="color:var(--dim)">Raised dots sit off route</span>
+    </div>
+
+    <h3 style="margin-top:30px">The carries that actually decide your food plan</h3>
+    <p style="color:var(--dim);font-size:13.5px;margin:0 0 16px;max-width:770px">
+      Raw distance ranks these badly. A 120-mile gap ending at a supermarket you ride straight
+      past is far easier than a 110-mile gap that dead-ends at a closed outpost and a 28-mile
+      round-trip detour. These are scored on what actually bites: dead stops inside the gap,
+      the detour you have to ride to reach the far end, and dry country.</p>
+    <div id="gaps"></div>
+
+    <h3 style="margin-top:28px">Every stop</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr>
+        <th class="n">Mile</th><th>Stop</th><th class="n">Off route</th>
+        <th>Buy</th><th class="n">Days food</th><th>Services</th>
+      </tr></thead>
+      <tbody id="rtb"></tbody>
+    </table>
+    </div>
+
+    <h3 style="margin-top:28px">Turning that into a food plan</h3>
+    <ul id="food"></ul>
+  </div>
+  </section>
+
+  <section id="packing">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Packing list</h2>
+      <span class="hint">Specced against the 12–88°F range this route actually spans</span>
+    </div>
+
+    <p style="color:var(--dim);font-size:13.5px;margin:14px 0 4px;max-width:800px">
+      The hard part of October here isn't the cold — it's the <b style="color:var(--ink)">76°F
+      spread</b> between an 88°F Mojave afternoon and a 12°F night on Lizard Head Pass, carried
+      on one bike. Everything below is specced against the weather model above rather than a
+      generic three-season list. Weights are typical, not best-in-class, and there are no brand
+      names: those go stale, and your kit is your own.</p>
+
+    <div class="wsum" id="wsum"></div>
+
+    <div class="toggle">
+      <button id="pAll" class="on">Everything</button>
+      <button id="pCrit">Critical only</button>
+      <button id="pLight">Lightest viable</button>
+    </div>
+
+    <div id="packlist"></div>
+  </div>
+  </section>
+
+  <section id="method">
   <p class="foot" id="foot"></p>
+  </section>
 </div>
 
 <script>
@@ -296,6 +469,153 @@ document.getElementById('tb').innerHTML = D.map(d=>`
     <td class="n" style="color:var(--faint)">${d.precip}%</td>
   </tr>`).join('');
 
+/* ================= SEASONAL ACCESS ================= */
+const SEASON = __SEASONAL__;
+const ST = {
+  verify:  ['Verify before you go','#f08282','rgba(224,83,83,.09)','#e05353'],
+  closed:  ['Closed in October','#d69a6b','rgba(201,122,60,.07)','#c97a3c'],
+  marginal:['End of its window','#e0be55','rgba(201,162,39,.06)','#c9a227'],
+  open:    ['Expected open','#77dfa0','transparent','#2a323c'],
+};
+document.getElementById('access-list').innerHTML = SEASON.map(s=>{
+  const [label,col,bg,bar] = ST[s.status];
+  const yr = s.type==='current'
+    ? '<span class="tag t-crit2" style="margin-right:7px">2026-specific</span>' : '';
+  return `<div class="gapcard" style="background:${bg};border-left-color:${bar}">
+    <div class="gaphead">
+      <span class="gaproute">${yr}${s.name}</span>
+      <span class="gapnum">mi ${s.from}–${s.to} · <b style="color:${col}">${label}</b></span>
+    </div>
+    <p style="margin-bottom:6px"><b style="color:var(--ink)">${s.window}</b></p>
+    <p>${s.detail}</p>
+    <p style="margin-top:7px"><a href="${s.url}" style="color:#7ec0ef">${s.src} →</a></p>
+  </div>`;
+}).join('');
+
+/* ================= RESUPPLY ================= */
+const RS = __RESUPPLY__, STOPS = RS.stops, GAPS = RS.gaps;
+const TOTAL = 1210;
+const TIER_LABEL = {full:'Full',good:'Good',moderate:'Moderate',minimal:'Minimal',none:'None'};
+
+/* route strip — dots positioned by true route mile */
+document.getElementById('strip').innerHTML =
+  '<div class="rail"></div>' +
+  STOPS.map(s=>{
+    const x = (s.mile/TOTAL*100).toFixed(2)+'%';
+    const off = s.off>0;
+    const stem = off ? `<div class="stem" style="left:${x};top:30px;height:16px"></div>` : '';
+    // label only the stops worth naming at this scale
+    const big = ['full','good'].includes(s.tier) || s.tier==='none';
+    const lab = big ? `<div class="slab" style="left:${x}">${s.name.split(' /')[0]}</div>` : '';
+    return stem +
+      `<div class="dot ${s.tier}${off?' off':''}" style="left:${x}"
+         title="Mile ${s.mile} · ${s.name} · ${TIER_LABEL[s.tier]}${off?' · '+s.off+' mi off route':''}"></div>`
+      + lab;
+  }).join('');
+
+/* gap cards, worst first */
+const sevWord = {critical:'Critical',watch:'Plan for it',ok:''};
+document.getElementById('gaps').innerHTML = GAPS
+  .filter(g=>g.severity!=='ok')
+  .sort((a,b)=>b.score-a.score)
+  .map(g=>{
+    const bits = [];
+    if(g.dead.length) bits.push(`<b style="color:#f08282">${g.dead.join(' and ')} sell no food.</b>`);
+    else if(g.skipped.length) bits.push(`Only ${g.skipped.join(', ')} in between — treat as nothing.`);
+    if(g.detour>0) bits.push(`Reaching ${g.to} costs an extra ${g.detour} mi round trip.`);
+    if(g.dry) bits.push('Water is seasonal or scarce through here.');
+    return `<div class="gapcard ${g.severity}">
+      <div class="gaphead">
+        <span class="gaproute">${g.from} → ${g.to}</span>
+        <span class="gapnum">${g.miles} mi · ~${g.days} days riding${
+          sevWord[g.severity]?' · <b style="color:'+(g.severity==='critical'?'#f08282':'#e0be55')+'">'+sevWord[g.severity]+'</b>':''}</span>
+      </div>
+      <p>${bits.join(' ')}</p></div>`;
+  }).join('');
+
+/* stop table */
+document.getElementById('rtb').innerHTML = STOPS.map(s=>`
+  <tr>
+    <td class="n" style="color:var(--dim)">${s.mile}</td>
+    <td><span class="lm">${s.name}</span><span class="conf">${s.state}</span>
+        ${s.conf==='low'?'<span class="conf">est.</span>':''}
+        <span class="nt">${s.note}</span></td>
+    <td class="n">${s.off>0?s.off+' mi':'—'}</td>
+    <td><span class="tag t-${s.tier}">${TIER_LABEL[s.tier]}</span></td>
+    <td class="n" style="color:var(--faint)">${s.maxDays?s.maxDays:'—'}</td>
+    <td style="color:var(--faint);font-size:12px">${s.services}</td>
+  </tr>`).join('');
+
+/* ================= PACKING ================= */
+const PK = __PACKING__;
+const PRI_LABEL = {critical:'Critical',recommended:'Recommended',comfort:'Comfort',optional:'Alternative'};
+const PRI_TAG   = {critical:'t-crit2',recommended:'t-rec',comfort:'t-com',optional:'t-opt'};
+const FILTERS = {
+  all:  p=>true,
+  crit: p=>p==='critical',
+  light:p=>p==='critical'||p==='recommended',
+};
+let pmode='all';
+
+function renderPack(){
+  const keep = FILTERS[pmode];
+  document.getElementById('packlist').innerHTML = Object.entries(PK).map(([cat,items])=>{
+    const rows = items.filter(i=>keep(i.pri));
+    if(!rows.length) return '';
+    const oz = rows.filter(i=>i.pri!=='optional').reduce((a,i)=>a+i.oz,0);
+    return `<h3>${cat}<span class="conf">${(oz/16).toFixed(1)} lb</span></h3>
+      <div class="scroll"><table>
+        <thead><tr><th>Item</th><th>Spec</th><th class="n">oz</th><th>Priority</th></tr></thead>
+        <tbody>${rows.map(i=>`
+          <tr>
+            <td><span class="lm">${i.item}</span>${i.why?`<span class="why">${i.why}</span>`:''}</td>
+            <td style="color:var(--dim);font-size:12.5px">${i.spec}</td>
+            <td class="n" style="color:var(--faint)">${i.oz||'—'}</td>
+            <td><span class="tag ${PRI_TAG[i.pri]}">${PRI_LABEL[i.pri]}</span></td>
+          </tr>`).join('')}</tbody>
+      </table></div>`;
+  }).join('');
+
+  const all = Object.values(PK).flat();
+  const sum = f => all.filter(f).reduce((a,i)=>a+i.oz,0)/16;
+  document.getElementById('wsum').innerHTML = [
+    [sum(i=>i.pri==='critical').toFixed(1)+' lb','Critical only'],
+    [sum(i=>i.pri==='critical'||i.pri==='recommended').toFixed(1)+' lb','Light but not miserable'],
+    [sum(i=>i.pri!=='optional').toFixed(1)+' lb','Everything incl. comfort'],
+    ['12°F','Coldest design night'],
+    ['6 L','Water capacity'],
+    ['4 days','Max food carry'],
+  ].map(s=>`<div><div class="v">${s[0]}</div><div class="k">${s[1]}</div></div>`).join('');
+  ['All','Crit','Light'].forEach((k,n)=>
+    document.getElementById('p'+k).classList.toggle('on', pmode===['all','crit','light'][n]));
+}
+pAll.onclick   = ()=>{pmode='all';   renderPack();};
+pCrit.onclick  = ()=>{pmode='crit';  renderPack();};
+pLight.onclick = ()=>{pmode='light'; renderPack();};
+renderPack();
+
+document.getElementById('food').innerHTML = [
+ `<b>Size your food bags for four days, not two.</b> Hanksville → Blanding is the constraint:
+   110 miles, Hite closed, Natural Bridges sells nothing. Most riders under-pack here and
+   over-pack water. If your bags can't hold four days, the route decides your itinerary
+   for you.`,
+ `<b>Escalante and Hanksville are the two loads that matter.</b> Escalante is the last good
+   grocery for ~285 miles, and Hanksville is the last anything before the Highway 95 void.
+   Everything between them — Boulder, Torrey — tops you up but won't rebuild you.`,
+ `<b>Decide the Blanding detour before you leave Hanksville, not during.</b> It's 14 miles off
+   route each way. Take it and the carry is 110 miles of food; skip it and you're going
+   Hanksville → Monticello, 170 miles, on what you're carrying.`,
+ `<b>Two towns are worth a motel, for weather rather than comfort.</b> Panguitch (Oct 8, 30°F
+   low, cold-air sink) and Monticello (Oct 16, 7,070 ft). Both have full resupply, so a
+   room, a shower and a dry sleeping bag cost you no extra riding.`,
+ `<b>Cold changes what you should be buying.</b> From Cedar City east you're eating in the dark
+   at 30°F. Weight per calorie stops being the only metric — food you can eat without cooking
+   in the wind, and one hot meal a day, matters more than it does in July.`,
+ `<b>Mail drops work at Escalante and Monticello.</b> Both have post offices and sit right
+   before the two hardest stretches. General Delivery holds 30 days; time it to your
+   actual pace, not your planned one.`,
+].map(s=>`<li>${s}</li>`).join('');
+
 /* ---------- narrative ---------- */
 document.getElementById('insights').innerHTML = [
  `<b>This is not a warming trend — it's a sawtooth.</b> The route crosses two cold spikes:
@@ -344,11 +664,22 @@ document.getElementById('foot').innerHTML =
   same distribution. Route mileage and elevation gain are from
   <a href="https://bikepackingroots.org/project/the-plateau-passage/">Bikepacking Roots</a>,
   who created and steward the Plateau Passage.<br><br>
-  <b>Known limits.</b> Daily positions assume a steady 60 mi/day from an Oct 1 start; shift the
-  dates and the whole curve shifts with them, because late October cools fast. Wind is not
-  modeled, and on the Norwood and Grand Staircase mesas it is often the thing that decides
-  your day. Off-station high points are lapse-rate estimates, not measurements — treat
-  Cedar Breaks, Boulder Mountain, Elk Ridge and Lizard Head as ±5°F.<br><br>
+  <b>Resupply data.</b> Mileages are <b>derived, not surveyed</b> — they come from the 23-day
+  itinerary above plus known town locations, so treat them as ±10 mi and cross-check against
+  the official <a href="https://bikepackingroots.org/project/the-plateau-passage/">Bikepacking
+  Roots route guide</a> before you rely on them. Stops marked <span class="conf">est.</span>
+  are the softest. Service tiers reflect what you can realistically buy, not what a map pin
+  claims exists. Hite's closure is confirmed by the
+  <a href="https://www.nps.gov/glca/planyourvisit/hite.htm">National Park Service</a>; older
+  route notes and trip reports still list it as a resupply and are out of date. Small-town
+  hours change constantly and seasonally — <b>call ahead, and never let a single store be
+  your only plan.</b><br><br>
+  <b>Known limits.</b> Daily positions assume ~55 mi/day from an Oct 1 start; shift the dates
+  and the whole curve shifts with them, because late October cools fast. Wind is not modeled,
+  and on the Norwood and Grand Staircase mesas it is often the thing that decides your day.
+  Off-station high points are lapse-rate estimates, not measurements — treat Cedar Breaks,
+  Boulder Mountain, Elk Ridge and Lizard Head as ±5°F. Packing weights are typical retail
+  weights, not best-in-class, and exclude worn items, bags, food and water.<br><br>
   <b>Reuse.</b> Released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY
   4.0</a> — fork it, re-run it for your own dates or a different route, publish the result.
   The generator is <code>build_data.py</code> in the <a href="__REPO__">repository</a>.
@@ -357,6 +688,27 @@ document.getElementById('foot').innerHTML =
   this in October.`;
 
 setMode('camp');
+
+/* ---------- nav highlight ----------
+   Last, and defensively. This is pure decoration: if it fails the page must
+   still be fully readable. An earlier version ran this before the narrative
+   blocks and threw on browsers without IntersectionObserver, silently blanking
+   the insights and the entire method footer. Never again. */
+try {
+  if (typeof IntersectionObserver === 'function') {
+    const links = [].slice.call(document.querySelectorAll('.nav a'));
+    const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) {
+          const i = secs.indexOf(e.target);
+          links.forEach((l, n) => l.classList.toggle('on', n === i));
+        }
+      });
+    }, {rootMargin:'-64px 0px -70% 0px'});
+    secs.forEach(s => s && io.observe(s));
+  }
+} catch (e) { /* decoration only — ignore */ }
 </script>
 </body>
 </html>

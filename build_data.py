@@ -6,6 +6,14 @@ corrections + within-month seasonal drift.
 import json, math
 
 # ---------------------------------------------------------------------------
+# Cumulative route mileage at the end of each day. NOT day*60 — the route is
+# ~1,200 mi total and the mountain days are genuinely slower. Averages 55 mi/day
+# with 40-45 mi days over Cedar Breaks, Boulder Mtn and Lizard Head Pass.
+# ---------------------------------------------------------------------------
+MILES = [0, 55, 120, 180, 235, 295, 340, 400, 450, 510, 570, 625, 680,
+         745, 800, 855, 915, 970, 1020, 1075, 1125, 1165, 1210]
+
+# ---------------------------------------------------------------------------
 # Base data: October climate normals at (or lapse-adjusted to) the elevation
 # actually ridden/camped that day. Highs/lows are mid-October baselines.
 #   camp_ft  = typical overnight elevation (drives the LOW temp)
@@ -99,7 +107,7 @@ for day, date, name, camp_ft, high_ft, hi, lo, pday, terrain, note in DAYS:
     p_precip = pday + max(0, (camp_ft - 5000) / 1000.0) * 1.2 - drift * 0.15
 
     rows.append({
-        "day": day, "date": date, "mile": (day - 1) * 60, "name": name,
+        "day": day, "date": date, "mile": MILES[day - 1], "name": name,
         "campFt": camp_ft, "highFt": high_ft, "terrain": terrain, "note": note,
         "hi": round(hi_adj), "lo": round(lo_adj),
         "hiPass": round(hi_pass), "loPass": round(lo_pass),

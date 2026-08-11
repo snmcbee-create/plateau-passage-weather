@@ -1,0 +1,367 @@
+{
+ "Sleep system": [
+  {
+   "item": "Sleeping bag / quilt",
+   "spec": "15\u00b0F rated, 800+ fill down",
+   "oz": 30,
+   "pri": "critical",
+   "why": "Model's coldest 10th-percentile night is 12\u00b0F at Lizard Head. A 30\u00b0F bag leaves you cold on roughly a third of the nights on this route."
+  },
+  {
+   "item": "Sleeping pad",
+   "spec": "Insulated, R-value 4.5+",
+   "oz": 15,
+   "pri": "critical",
+   "why": "Ground conduction, not air temperature, is what actually ends a night. An R-2 summer pad on frozen ground at 10,000 ft defeats any bag you pair it with."
+  },
+  {
+   "item": "Pillow / stuff sack",
+   "spec": "Inflatable or clothes bag",
+   "oz": 3,
+   "pri": "comfort",
+   "why": "3 oz for real sleep across 23 nights is one of the best trades on the list."
+  }
+ ],
+ "Shelter": [
+  {
+   "item": "Tent \u2014 recommended",
+   "spec": "Freestanding/semi 1P double-wall, 3-season",
+   "oz": 40,
+   "pri": "critical",
+   "why": "THE PICK. Slickrock and frozen ground won't hold stakes, and double-wall manages the condensation you get from big diurnal swings. Worth ~14 oz over a tarp."
+  },
+  {
+   "item": "Tarp + bivy \u2014 alternative",
+   "spec": "Silnylon/DCF tarp + water-resistant bivy",
+   "oz": 22,
+   "pri": "optional",
+   "why": "Lightest real option and fine for the desert half. On the San Juan nights it is a genuine sufferfest, and it pitches badly on slickrock."
+  },
+  {
+   "item": "Mid / pyramid \u2014 alternative",
+   "spec": "Single-wall, trekking-pole or bar pitched",
+   "oz": 26,
+   "pri": "optional",
+   "why": "Good compromise: near-tarp weight, real snow shedding. Needs anchors you may not find."
+  },
+  {
+   "item": "Groundsheet",
+   "spec": "Polycryo or DCF, cut to size",
+   "oz": 2,
+   "pri": "recommended",
+   "why": "Slickrock and cryptobiotic-adjacent grit shred floors."
+  }
+ ],
+ "Worn / riding": [
+  {
+   "item": "Bib shorts",
+   "spec": "Chamois, 1 pair",
+   "oz": 7,
+   "pri": "critical",
+   "why": "One pair. Wash and dry them \u2014 the desert air does this in an hour."
+  },
+  {
+   "item": "Merino T or sun hoody",
+   "spec": "150\u2013190 g/m\u00b2 merino or synthetic hoody",
+   "oz": 6,
+   "pri": "critical",
+   "why": "Sun hoody wins on the Mojave days; UV index is still 3\u20136 in October."
+  },
+  {
+   "item": "Lightweight gloves",
+   "spec": "Full-finger, thin",
+   "oz": 2,
+   "pri": "recommended",
+   "why": "Dawn starts are near freezing for two-thirds of the trip."
+  },
+  {
+   "item": "Cycling shoes",
+   "spec": "Stiff sole, drains and dries",
+   "oz": 0,
+   "pri": "critical",
+   "why": "Worn, not carried. Waterproof shoes stay wet once flooded \u2014 pick drainage."
+  }
+ ],
+ "Insulation": [
+  {
+   "item": "Puffy jacket",
+   "spec": "Down or synthetic, 800fp, hooded",
+   "oz": 11,
+   "pri": "critical",
+   "why": "Worn in camp every night from Oct 6 onward. Hooded is not optional at 10,000 ft."
+  },
+  {
+   "item": "Fleece / grid mid-layer",
+   "spec": "100\u2013150 weight grid fleece",
+   "oz": 8,
+   "pri": "critical",
+   "why": "The layer you actually climb in. Down soaks through with sweat; fleece doesn't."
+  },
+  {
+   "item": "Merino base, long sleeve",
+   "spec": "200 g/m\u00b2, sleep-clean",
+   "oz": 7,
+   "pri": "critical",
+   "why": "Doubles as sleepwear. Keeping it dry is what makes the 15\u00b0F bag hit its rating."
+  },
+  {
+   "item": "Thermal tights / long johns",
+   "spec": "200 g/m\u00b2 merino or fleece",
+   "oz": 6,
+   "pri": "critical",
+   "why": "Legs get ignored and then you're awake at 3am."
+  },
+  {
+   "item": "Insulated booties or spare socks",
+   "spec": "Down booties, or 2 thick wool pairs",
+   "oz": 4,
+   "pri": "comfort",
+   "why": "Cold feet are the single most common reason people don't sleep in the cold."
+  },
+  {
+   "item": "Warm hat + buff",
+   "spec": "Merino beanie, neck gaiter",
+   "oz": 3,
+   "pri": "critical",
+   "why": "2 oz that buys roughly 5\u00b0F of effective bag rating."
+  },
+  {
+   "item": "Insulated gloves",
+   "spec": "Softshell or lobster, wind-resistant",
+   "oz": 4,
+   "pri": "critical",
+   "why": "Descending from Cedar Breaks or Lizard Head at 25\u00b0F is the coldest you will be."
+  }
+ ],
+ "Wind & wet": [
+  {
+   "item": "Rain jacket",
+   "spec": "2.5-layer, pit zips, hood",
+   "oz": 8,
+   "pri": "critical",
+   "why": "Precip chance peaks at only ~26%, but at 10,000 ft in late October that's snow."
+  },
+  {
+   "item": "Rain pants or wind pants",
+   "spec": "Lightweight, full or 3/4 zip",
+   "oz": 5,
+   "pri": "recommended",
+   "why": "Wind pants cover 90% of the need at half the weight. Full rain pants if you're riding late October."
+  },
+  {
+   "item": "Waterproof socks",
+   "spec": "Knee or ankle length",
+   "oz": 3,
+   "pri": "comfort",
+   "why": "Cheaper and lighter than solving wet feet any other way."
+  }
+ ],
+ "Water": [
+  {
+   "item": "Capacity",
+   "spec": "6 L total \u2014 3 bottles + 3 L bladder/dromedary",
+   "oz": 8,
+   "pri": "critical",
+   "why": "Longest documented dry stretch is ~60 mi. Six litres covers that plus a dry camp with a margin for a stock tank being empty."
+  },
+  {
+   "item": "Filter",
+   "spec": "Squeeze or inline hollow-fibre",
+   "oz": 4,
+   "pri": "critical",
+   "why": "SLEEP WITH IT from Oct 6 onward. One freeze cracks the fibres invisibly and it then passes everything."
+  },
+  {
+   "item": "Chemical backup",
+   "spec": "Tablets or drops",
+   "oz": 1,
+   "pri": "critical",
+   "why": "Weighs nothing and covers a failed or frozen filter."
+  },
+  {
+   "item": "Sediment pre-filter",
+   "spec": "Bandana or coffee filter",
+   "oz": 1,
+   "pri": "recommended",
+   "why": "Desert stock tanks and silty potholes will clog a filter in a day without one."
+  }
+ ],
+ "Cooking": [
+  {
+   "item": "Stove \u2014 recommended",
+   "spec": "Upright canister, ~3 oz",
+   "oz": 3,
+   "pri": "recommended",
+   "why": "THE PICK. Simple, fast, and October nights aren't cold enough to cripple isopropane if you sleep with the canister. Fuel is stocked in Moab, Escalante, Blanding."
+  },
+  {
+   "item": "Stove \u2014 alternative",
+   "spec": "Alcohol or cold-soak",
+   "oz": 1,
+   "pri": "optional",
+   "why": "Lightest. But alcohol is slow and inefficient in cold and wind, and a hot dinner does real work for morale at 25\u00b0F."
+  },
+  {
+   "item": "Fuel",
+   "spec": "1 \u00d7 230 g canister, swap at Moab",
+   "oz": 14,
+   "pri": "recommended",
+   "why": "Cold burns fuel faster. Buy the big one; small ones are unreliably stocked."
+  },
+  {
+   "item": "Pot + spork",
+   "spec": "750 ml titanium, lid",
+   "oz": 5,
+   "pri": "recommended",
+   "why": "750 ml so you can rehydrate and drink from the same vessel."
+  },
+  {
+   "item": "Insulated mug",
+   "spec": "500 ml, lidded",
+   "oz": 4,
+   "pri": "comfort",
+   "why": "Underrated. A hot drink before you leave the bag at 20\u00b0F changes the whole morning."
+  }
+ ],
+ "Food carry": [
+  {
+   "item": "Bag capacity",
+   "spec": "Room for 4 full days",
+   "oz": 0,
+   "pri": "critical",
+   "why": "Sized by the Hanksville \u2192 Blanding carry: 110 mi with Hite closed. Most riders are short here, not on water."
+  },
+  {
+   "item": "Odour-proof / critter bag",
+   "spec": "Roll-top dry bag",
+   "oz": 2,
+   "pri": "recommended",
+   "why": "Ringtails and mice at established desert camps, not bears, are the problem."
+  }
+ ],
+ "Electronics": [
+  {
+   "item": "Front light",
+   "spec": "300+ lumen, USB",
+   "oz": 5,
+   "pri": "critical",
+   "why": "Daylight drops from 11h50m to 10h50m across the trip, and the hardest days are last."
+  },
+  {
+   "item": "Rear light + headlamp",
+   "spec": "Blinky + 200 lm headlamp",
+   "oz": 4,
+   "pri": "critical",
+   "why": "Highway 95 and Hwy 145 have real traffic and no shoulder."
+  },
+  {
+   "item": "Power bank",
+   "spec": "10,000 mAh",
+   "oz": 7,
+   "pri": "critical",
+   "why": "Cold roughly halves usable battery. 5\u20136 days between reliable outlets on the Escalante \u2192 Blanding stretch."
+  },
+  {
+   "item": "GPS / phone + offline maps",
+   "spec": "Downloaded before you leave town",
+   "oz": 0,
+   "pri": "critical",
+   "why": "No cell service for hours at a time on Hwy 95."
+  },
+  {
+   "item": "Satellite messenger",
+   "spec": "Two-way with SOS",
+   "oz": 4,
+   "pri": "critical",
+   "why": "Not optional here. Long unpaved stretches, no traffic, no signal, freezing nights."
+  }
+ ],
+ "Repair": [
+  {
+   "item": "Tubes + plugs + patches",
+   "spec": "2 tubes, tubeless plugs, patch kit",
+   "oz": 10,
+   "pri": "critical",
+   "why": "Goatheads west of St. George, slickrock cuts east of it."
+  },
+  {
+   "item": "Pump + tyre boot",
+   "spec": "Frame pump, boot or dollar bill",
+   "oz": 7,
+   "pri": "critical",
+   "why": ""
+  },
+  {
+   "item": "Multi-tool + chain tool",
+   "spec": "With quick links",
+   "oz": 6,
+   "pri": "critical",
+   "why": ""
+  },
+  {
+   "item": "Spare derailleur hanger",
+   "spec": "Bike-specific",
+   "oz": 1,
+   "pri": "critical",
+   "why": "The one part no shop between Moab and Durango will have for your frame."
+  },
+  {
+   "item": "Chain lube",
+   "spec": "Dry/wax for dust",
+   "oz": 2,
+   "pri": "recommended",
+   "why": "Colorado Plateau dust destroys wet lube in a day."
+  },
+  {
+   "item": "Spare brake pads",
+   "spec": "One set",
+   "oz": 2,
+   "pri": "recommended",
+   "why": "123,000 ft of climbing means 123,000 ft of descending."
+  },
+  {
+   "item": "Zip ties, tape, voile strap",
+   "spec": "Assorted",
+   "oz": 3,
+   "pri": "recommended",
+   "why": ""
+  }
+ ],
+ "Health": [
+  {
+   "item": "First aid kit",
+   "spec": "Trimmed personal kit",
+   "oz": 6,
+   "pri": "critical",
+   "why": ""
+  },
+  {
+   "item": "Sunscreen + SPF lip balm",
+   "spec": "High SPF, small",
+   "oz": 3,
+   "pri": "critical",
+   "why": "Snow and slickrock both reflect. UV stays meaningful all month."
+  },
+  {
+   "item": "Chamois cream",
+   "spec": "Small tube",
+   "oz": 3,
+   "pri": "recommended",
+   "why": "23 consecutive days. Do not economise here."
+  },
+  {
+   "item": "Electrolytes",
+   "spec": "Tabs or powder",
+   "oz": 3,
+   "pri": "recommended",
+   "why": "Dry cold hides dehydration as effectively as heat does."
+  },
+  {
+   "item": "Toothbrush / meds / ID / cash",
+   "spec": "Personal",
+   "oz": 5,
+   "pri": "critical",
+   "why": "Carry cash \u2014 small-town card readers go down and some places are cash-only."
+  }
+ ]
+}
