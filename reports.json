@@ -1,0 +1,13 @@
+{
+ "_comment": "Community reports from riders and locals. Newest wins. These OVERRIDE the defaults in build_supply.py and raise a data point's confidence to 'reported'. Add entries via the GitHub issue forms in .github/ISSUE_TEMPLATE/, then run: python3 merge_reports.py",
+ "_schema": {
+  "kind": "water | business",
+  "mile": "route mile the entry is keyed to (must match build_supply.py)",
+  "date": "YYYY-MM-DD the reporter was actually there",
+  "status": "water only: tap | developed | perennial | seasonal | intermittent | none",
+  "name": "business only: enough of the name to match",
+  "text": "what they actually found",
+  "by": "name or handle, or 'anonymous'"
+ },
+ "reports": []
+}

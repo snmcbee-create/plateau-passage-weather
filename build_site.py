@@ -3,14 +3,14 @@
 Assemble the publishable, self-contained index.html.
 
   python3 build_data.py     # regenerate route_weather.json from the model
-  python3 build_site.py     # inline data + Chart.js into index.html
+  python3 build_site.py     # inline all data + Chart.js into index.html
 
 Produces a single file with no network dependencies, so it renders on a phone
 with no signal — which is where it will actually get used.
 """
 import json, datetime, pathlib, sys
 
-VERSION = "1.2"
+VERSION = "1.3"
 REPO = "https://github.com/snmcbee-create/plateau-passage-weather"
 
 here = pathlib.Path(__file__).parent
@@ -26,6 +26,8 @@ data = load("route_weather.json")
 resupply = load("resupply.json")
 packing = load("packing.json")
 seasonal = load("seasonal.json")
+businesses = load("businesses.json")
+water = load("water.json")
 
 
 def j(o):
@@ -42,6 +44,8 @@ SUBS = {
     "__RESUPPLY__": j(resupply),
     "__PACKING__": j(packing),
     "__SEASONAL__": j(seasonal),
+    "__BUSINESSES__": j(businesses),
+    "__WATER__": j(water),
     "__VERSION__": VERSION,
     "__BUILT__": datetime.date.today().strftime("%B %Y"),
     "__REPO__": REPO,
@@ -60,4 +64,5 @@ out.write_text(html)
 print(f"wrote {out.name}  ({len(html)/1024:.0f} KB)")
 print(f"  {len(data)} days · {len(resupply['stops'])} resupply stops · "
       f"{sum(len(v) for v in packing.values())} packing items · "
-      f"{len(seasonal)} access notes · no external requests")
+      f"{len(seasonal)} access notes · {len(businesses)} businesses · "
+      f"{len(water['points'])} water points · no external requests")

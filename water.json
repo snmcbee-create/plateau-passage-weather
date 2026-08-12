@@ -1,0 +1,899 @@
+{
+ "points": [
+  {
+   "mile": 0,
+   "name": "Las Vegas \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "Fill to full capacity. Next certain water is Mesquite.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 55,
+   "name": "Lovell Canyon / Spring Mtns",
+   "rel": "seasonal",
+   "conf": "inferred",
+   "treat": true,
+   "note": "Springs exist in the Spring Mountains but I cannot confirm any specific one is flowing in October. Plan the Las Vegas \u2192 Mesquite leg as a full dry carry.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 120,
+   "name": "Mesquite \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 180,
+   "name": "St. George \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 235,
+   "name": "Springdale / Virgin River",
+   "rel": "perennial",
+   "conf": "verified",
+   "treat": true,
+   "note": "Town taps in Springdale. The Virgin River is perennial but silty \u2014 pre-filter.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 295,
+   "name": "Cedar City \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 340,
+   "name": "Cedar Breaks NM",
+   "rel": "seasonal",
+   "conf": "listed",
+   "treat": false,
+   "note": "Visitor centre water is seasonal and the facility closes for winter in October. Do not count on it. Brian Head village is largely shut this month.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 400,
+   "name": "Panguitch \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 450,
+   "name": "Bryce Canyon NP / Ruby's Inn",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "NPS visitor centre and the general store both have water.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 510,
+   "name": "Cannonville / Paria River",
+   "rel": "intermittent",
+   "conf": "inferred",
+   "treat": true,
+   "note": "Tiny town taps if anything is open. The Paria is heavily silted \u2014 a pre-filter is the difference between filtering and destroying a filter.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 570,
+   "name": "Escalante \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 625,
+   "name": "Boulder \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "Boulder Creek nearby and generally flowing.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 680,
+   "name": "Torrey / Fremont River",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": true,
+   "note": "Town taps. Capitol Reef's Fruita campground has potable water seasonally.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 745,
+   "name": "Hanksville \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "LAST CERTAIN WATER before the Hwy 95 stretch. Fill everything. The Dirty Devil and Fremont here are silty and mineralised \u2014 poor sources even filtered.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 762,
+   "name": "Poison Spring",
+   "rel": "intermittent",
+   "conf": "unknown",
+   "treat": true,
+   "note": "~17 mi south of Hanksville off SR-95. Named Poison Spring, which is reason enough for caution, and I have no reliable report of its current state or potability. TREAT AS UNAVAILABLE when planning.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 778,
+   "name": "Hog Springs rest area",
+   "rel": "seasonal",
+   "conf": "listed",
+   "treat": true,
+   "note": "Developed BLM rest stop on Hwy 95 with picnic tables, vault toilet and a creek. The creek is the water \u2014 there is no confirmed potable spigot. Reported as the most useful source in this stretch, but unconfirmed for October.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 800,
+   "name": "Hite / Colorado River",
+   "rel": "perennial",
+   "conf": "verified",
+   "treat": true,
+   "note": "ALL SERVICES CLOSED. The river is there but access is degraded by very low lake levels, and the water is heavily silted. A last resort, not a plan.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 830,
+   "name": "Natural Bridges NM visitor centre",
+   "rel": "developed",
+   "conf": "verified",
+   "treat": false,
+   "note": "The one dependable tap between Hanksville and Blanding \u2014 AND IT IS TURNED OFF after the first hard freeze, which the weather model puts near 29% on your arrival night. Call (435) 692-1234 before you plan the carry around it.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": "shut off after the first hard freeze"
+  },
+  {
+   "mile": 845,
+   "name": "Elk Ridge springs & stock tanks",
+   "rel": "intermittent",
+   "conf": "unknown",
+   "treat": true,
+   "note": "Bikepacking Roots' own guidance is 'do not plan on every stock tank having water'. Post-Babylon-Fire, ash contamination is an additional unknown. LOWEST CONFIDENCE POINT ON THE ROUTE.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 855,
+   "name": "Blanding \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 915,
+   "name": "Monticello \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 960,
+   "name": "Canyonlands rim / Lockhart Basin",
+   "rel": "none",
+   "conf": "verified",
+   "treat": false,
+   "note": "NO WATER. Potholes hold water after rain and are otherwise dry and ecologically sensitive. Carry everything from Monticello.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1020,
+   "name": "Moab \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1050,
+   "name": "La Sal Mountains creeks",
+   "rel": "perennial",
+   "conf": "listed",
+   "treat": true,
+   "note": "Montane creeks, generally flowing in October and the best natural water on the route.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1075,
+   "name": "Paradox Valley",
+   "rel": "intermittent",
+   "conf": "inferred",
+   "treat": true,
+   "note": "Scarce and unreliable. Carry from the La Sals.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1125,
+   "name": "Naturita / San Miguel River",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": true,
+   "note": "Town water in both Naturita and Nucla.",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1165,
+   "name": "Norwood \u2014 town water",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1195,
+   "name": "Rico / Dolores River",
+   "rel": "perennial",
+   "conf": "listed",
+   "treat": true,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  },
+  {
+   "mile": 1210,
+   "name": "Durango \u2014 finish",
+   "rel": "tap",
+   "conf": "verified",
+   "treat": false,
+   "note": "",
+   "checked": "August 2026",
+   "reports": [],
+   "conditional": null
+  }
+ ],
+ "dry": {
+  "normal": [
+   {
+    "from": "Las Vegas",
+    "to": "Mesquite",
+    "fromMile": 0,
+    "toMile": 120,
+    "miles": 120,
+    "litres": 6.0,
+    "unknown": 1,
+    "score": 140,
+    "between": [
+     {
+      "name": "Lovell Canyon / Spring Mtns",
+      "rel": "seasonal",
+      "conf": "inferred"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Mesquite",
+    "to": "St. George",
+    "fromMile": 120,
+    "toMile": 180,
+    "miles": 60,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 60,
+    "between": [],
+    "severity": "watch"
+   },
+   {
+    "from": "St. George",
+    "to": "Cedar City",
+    "fromMile": 180,
+    "toMile": 295,
+    "miles": 115,
+    "litres": 6.0,
+    "unknown": 0,
+    "score": 115,
+    "between": [
+     {
+      "name": "Springdale / Virgin River",
+      "rel": "perennial",
+      "conf": "verified"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Cedar City",
+    "to": "Panguitch",
+    "fromMile": 295,
+    "toMile": 400,
+    "miles": 105,
+    "litres": 5.0,
+    "unknown": 0,
+    "score": 105,
+    "between": [
+     {
+      "name": "Cedar Breaks NM",
+      "rel": "seasonal",
+      "conf": "listed"
+     }
+    ],
+    "severity": "watch"
+   },
+   {
+    "from": "Panguitch",
+    "to": "Bryce Canyon NP / Ruby's Inn",
+    "fromMile": 400,
+    "toMile": 450,
+    "miles": 50,
+    "litres": 2.5,
+    "unknown": 0,
+    "score": 50,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Bryce Canyon NP / Ruby's Inn",
+    "to": "Escalante",
+    "fromMile": 450,
+    "toMile": 570,
+    "miles": 120,
+    "litres": 6.0,
+    "unknown": 1,
+    "score": 140,
+    "between": [
+     {
+      "name": "Cannonville / Paria River",
+      "rel": "intermittent",
+      "conf": "inferred"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Escalante",
+    "to": "Boulder",
+    "fromMile": 570,
+    "toMile": 625,
+    "miles": 55,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 55,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Boulder",
+    "to": "Torrey / Fremont River",
+    "fromMile": 625,
+    "toMile": 680,
+    "miles": 55,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 55,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Torrey / Fremont River",
+    "to": "Hanksville",
+    "fromMile": 680,
+    "toMile": 745,
+    "miles": 65,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 65,
+    "between": [],
+    "severity": "watch"
+   },
+   {
+    "from": "Hanksville",
+    "to": "Natural Bridges NM visitor centre",
+    "fromMile": 745,
+    "toMile": 830,
+    "miles": 85,
+    "litres": 4.0,
+    "unknown": 1,
+    "score": 105,
+    "between": [
+     {
+      "name": "Poison Spring",
+      "rel": "intermittent",
+      "conf": "unknown"
+     },
+     {
+      "name": "Hog Springs rest area",
+      "rel": "seasonal",
+      "conf": "listed"
+     },
+     {
+      "name": "Hite / Colorado River",
+      "rel": "perennial",
+      "conf": "verified"
+     }
+    ],
+    "severity": "watch"
+   },
+   {
+    "from": "Natural Bridges NM visitor centre",
+    "to": "Blanding",
+    "fromMile": 830,
+    "toMile": 855,
+    "miles": 25,
+    "litres": 2.0,
+    "unknown": 1,
+    "score": 45,
+    "between": [
+     {
+      "name": "Elk Ridge springs & stock tanks",
+      "rel": "intermittent",
+      "conf": "unknown"
+     }
+    ],
+    "severity": "ok"
+   },
+   {
+    "from": "Blanding",
+    "to": "Monticello",
+    "fromMile": 855,
+    "toMile": 915,
+    "miles": 60,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 60,
+    "between": [],
+    "severity": "watch"
+   },
+   {
+    "from": "Monticello",
+    "to": "Moab",
+    "fromMile": 915,
+    "toMile": 1020,
+    "miles": 105,
+    "litres": 5.0,
+    "unknown": 0,
+    "score": 105,
+    "between": [
+     {
+      "name": "Canyonlands rim / Lockhart Basin",
+      "rel": "none",
+      "conf": "verified"
+     }
+    ],
+    "severity": "watch"
+   },
+   {
+    "from": "Moab",
+    "to": "Naturita / San Miguel River",
+    "fromMile": 1020,
+    "toMile": 1125,
+    "miles": 105,
+    "litres": 5.0,
+    "unknown": 1,
+    "score": 125,
+    "between": [
+     {
+      "name": "La Sal Mountains creeks",
+      "rel": "perennial",
+      "conf": "listed"
+     },
+     {
+      "name": "Paradox Valley",
+      "rel": "intermittent",
+      "conf": "inferred"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Naturita / San Miguel River",
+    "to": "Norwood",
+    "fromMile": 1125,
+    "toMile": 1165,
+    "miles": 40,
+    "litres": 2.0,
+    "unknown": 0,
+    "score": 40,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Norwood",
+    "to": "Durango",
+    "fromMile": 1165,
+    "toMile": 1210,
+    "miles": 45,
+    "litres": 2.0,
+    "unknown": 0,
+    "score": 45,
+    "between": [
+     {
+      "name": "Rico / Dolores River",
+      "rel": "perennial",
+      "conf": "listed"
+     }
+    ],
+    "severity": "ok"
+   }
+  ],
+  "worst": [
+   {
+    "from": "Las Vegas",
+    "to": "Mesquite",
+    "fromMile": 0,
+    "toMile": 120,
+    "miles": 120,
+    "litres": 6.0,
+    "unknown": 1,
+    "score": 140,
+    "between": [
+     {
+      "name": "Lovell Canyon / Spring Mtns",
+      "rel": "seasonal",
+      "conf": "inferred"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Mesquite",
+    "to": "St. George",
+    "fromMile": 120,
+    "toMile": 180,
+    "miles": 60,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 60,
+    "between": [],
+    "severity": "watch"
+   },
+   {
+    "from": "St. George",
+    "to": "Cedar City",
+    "fromMile": 180,
+    "toMile": 295,
+    "miles": 115,
+    "litres": 6.0,
+    "unknown": 0,
+    "score": 115,
+    "between": [
+     {
+      "name": "Springdale / Virgin River",
+      "rel": "perennial",
+      "conf": "verified"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Cedar City",
+    "to": "Panguitch",
+    "fromMile": 295,
+    "toMile": 400,
+    "miles": 105,
+    "litres": 5.0,
+    "unknown": 0,
+    "score": 105,
+    "between": [
+     {
+      "name": "Cedar Breaks NM",
+      "rel": "seasonal",
+      "conf": "listed"
+     }
+    ],
+    "severity": "watch"
+   },
+   {
+    "from": "Panguitch",
+    "to": "Bryce Canyon NP / Ruby's Inn",
+    "fromMile": 400,
+    "toMile": 450,
+    "miles": 50,
+    "litres": 2.5,
+    "unknown": 0,
+    "score": 50,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Bryce Canyon NP / Ruby's Inn",
+    "to": "Escalante",
+    "fromMile": 450,
+    "toMile": 570,
+    "miles": 120,
+    "litres": 6.0,
+    "unknown": 1,
+    "score": 140,
+    "between": [
+     {
+      "name": "Cannonville / Paria River",
+      "rel": "intermittent",
+      "conf": "inferred"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Escalante",
+    "to": "Boulder",
+    "fromMile": 570,
+    "toMile": 625,
+    "miles": 55,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 55,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Boulder",
+    "to": "Torrey / Fremont River",
+    "fromMile": 625,
+    "toMile": 680,
+    "miles": 55,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 55,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Torrey / Fremont River",
+    "to": "Hanksville",
+    "fromMile": 680,
+    "toMile": 745,
+    "miles": 65,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 65,
+    "between": [],
+    "severity": "watch"
+   },
+   {
+    "from": "Hanksville",
+    "to": "Blanding",
+    "fromMile": 745,
+    "toMile": 855,
+    "miles": 110,
+    "litres": 5.5,
+    "unknown": 2,
+    "score": 150,
+    "between": [
+     {
+      "name": "Poison Spring",
+      "rel": "intermittent",
+      "conf": "unknown"
+     },
+     {
+      "name": "Hog Springs rest area",
+      "rel": "seasonal",
+      "conf": "listed"
+     },
+     {
+      "name": "Hite / Colorado River",
+      "rel": "perennial",
+      "conf": "verified"
+     },
+     {
+      "name": "Natural Bridges NM visitor centre",
+      "rel": "developed",
+      "conf": "verified"
+     },
+     {
+      "name": "Elk Ridge springs & stock tanks",
+      "rel": "intermittent",
+      "conf": "unknown"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Blanding",
+    "to": "Monticello",
+    "fromMile": 855,
+    "toMile": 915,
+    "miles": 60,
+    "litres": 3.0,
+    "unknown": 0,
+    "score": 60,
+    "between": [],
+    "severity": "watch"
+   },
+   {
+    "from": "Monticello",
+    "to": "Moab",
+    "fromMile": 915,
+    "toMile": 1020,
+    "miles": 105,
+    "litres": 5.0,
+    "unknown": 0,
+    "score": 105,
+    "between": [
+     {
+      "name": "Canyonlands rim / Lockhart Basin",
+      "rel": "none",
+      "conf": "verified"
+     }
+    ],
+    "severity": "watch"
+   },
+   {
+    "from": "Moab",
+    "to": "Naturita / San Miguel River",
+    "fromMile": 1020,
+    "toMile": 1125,
+    "miles": 105,
+    "litres": 5.0,
+    "unknown": 1,
+    "score": 125,
+    "between": [
+     {
+      "name": "La Sal Mountains creeks",
+      "rel": "perennial",
+      "conf": "listed"
+     },
+     {
+      "name": "Paradox Valley",
+      "rel": "intermittent",
+      "conf": "inferred"
+     }
+    ],
+    "severity": "critical"
+   },
+   {
+    "from": "Naturita / San Miguel River",
+    "to": "Norwood",
+    "fromMile": 1125,
+    "toMile": 1165,
+    "miles": 40,
+    "litres": 2.0,
+    "unknown": 0,
+    "score": 40,
+    "between": [],
+    "severity": "ok"
+   },
+   {
+    "from": "Norwood",
+    "to": "Durango",
+    "fromMile": 1165,
+    "toMile": 1210,
+    "miles": 45,
+    "litres": 2.0,
+    "unknown": 0,
+    "score": 45,
+    "between": [
+     {
+      "name": "Rico / Dolores River",
+      "rel": "perennial",
+      "conf": "listed"
+     }
+    ],
+    "severity": "ok"
+   }
+  ],
+  "newInWorst": [
+   {
+    "from": "Hanksville",
+    "to": "Blanding",
+    "fromMile": 745,
+    "toMile": 855,
+    "miles": 110,
+    "litres": 5.5,
+    "unknown": 2,
+    "score": 150,
+    "between": [
+     {
+      "name": "Poison Spring",
+      "rel": "intermittent",
+      "conf": "unknown"
+     },
+     {
+      "name": "Hog Springs rest area",
+      "rel": "seasonal",
+      "conf": "listed"
+     },
+     {
+      "name": "Hite / Colorado River",
+      "rel": "perennial",
+      "conf": "verified"
+     },
+     {
+      "name": "Natural Bridges NM visitor centre",
+      "rel": "developed",
+      "conf": "verified"
+     },
+     {
+      "name": "Elk Ridge springs & stock tanks",
+      "rel": "intermittent",
+      "conf": "unknown"
+     }
+    ],
+    "severity": "critical"
+   }
+  ]
+ },
+ "sunday": {
+  "start": "2026-10-01",
+  "hits": [
+   {
+    "date": "Oct 11",
+    "dow": "Sunday",
+    "mile": 570,
+    "town": "Escalante, UT",
+    "shut": [
+     "Griffin's Grocery & General Merchandise",
+     "Escalante Mercantile & Natural Grocery"
+    ],
+    "open": []
+   }
+  ]
+ }
+}

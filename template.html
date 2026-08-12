@@ -161,6 +161,7 @@
     <a href="#weather" class="on">Weather</a>
     <a href="#access">Seasonal access</a>
     <a href="#resupply">Resupply &amp; food</a>
+    <a href="#water">Water</a>
     <a href="#packing">Packing list</a>
     <a href="#method">Method &amp; limits</a>
   </nav>
@@ -275,6 +276,8 @@
       <span style="color:var(--dim)">Raised dots sit off route</span>
     </div>
 
+    <div id="sunday"></div>
+
     <h3 style="margin-top:30px">The carries that actually decide your food plan</h3>
     <p style="color:var(--dim);font-size:13.5px;margin:0 0 16px;max-width:770px">
       Raw distance ranks these badly. A 120-mile gap ending at a supermarket you ride straight
@@ -296,6 +299,60 @@
 
     <h3 style="margin-top:28px">Turning that into a food plan</h3>
     <ul id="food"></ul>
+
+    <h3 style="margin-top:28px">Business directory</h3>
+    <p style="color:var(--dim);font-size:13.5px;margin:0 0 4px;max-width:800px">
+      Names, addresses and phone numbers cross-check across multiple sources and are
+      reasonably solid. <b style="color:#e0be55">Hours are not.</b> They come from online
+      listings, they drift seasonally, and at least one listing I pulled was internally
+      inconsistent. Every entry shows when it was checked and carries a phone number for
+      exactly that reason — <b style="color:var(--ink)">call, don't trust</b>.</p>
+    <div id="bizlist" style="margin-top:16px"></div>
+  </div>
+  </section>
+
+  <section id="water">
+  <div class="card">
+    <div class="head">
+      <h2 style="margin-bottom:0">Water</h2>
+      <span class="hint">The least certain data on this site — read the confidence note</span>
+    </div>
+
+    <div class="warn" style="margin:16px 0 20px">
+      <div class="wt">How confident am I in this? Not very.</div>
+      <p>Town taps and agency-maintained spigots are solid. <b>Everything else on this page
+         is inference, not observation.</b> I have not ridden this route, I could not obtain
+         the official GPX, and the springs and stock tanks that matter most — Poison Spring,
+         Hog Springs, the Elk Ridge tanks — are precisely the ones I cannot verify. Bikepacking
+         Roots' own guidance is <i>"do not plan on every stock tank having water."</i> Take
+         that seriously and treat every amber and red entry below as <b>absent</b> until
+         someone who was there says otherwise.
+         <a href="__REPO__/issues/new?template=water-report.yml">Report what you found →</a></p>
+    </div>
+
+    <div class="wsum" id="watersum"></div>
+
+    <div class="head" style="margin-top:8px">
+      <h3 style="margin:0">Dry stretches between reliable taps</h3>
+      <span class="hint">Toggle the worst case — it changes which stretch is worst</span>
+    </div>
+    <div class="toggle" style="margin-top:12px">
+      <button id="wNorm" class="on">All taps working</button>
+      <button id="wWorst">Natural Bridges shut off</button>
+    </div>
+    <div class="chartbox short"><canvas id="c3"></canvas></div>
+    <div id="drynote" style="margin-top:14px"></div>
+
+    <h3 style="margin-top:26px">Every water point, with its confidence</h3>
+    <div class="scroll">
+    <table>
+      <thead><tr>
+        <th class="n">Mile</th><th>Source</th><th>Type</th>
+        <th>Confidence</th><th>Treat?</th><th>Notes</th>
+      </tr></thead>
+      <tbody id="wtb"></tbody>
+    </table>
+    </div>
   </div>
   </section>
 
@@ -331,7 +388,19 @@
 </div>
 
 <script>
-const D = __DATA__;
+/* ---------- data ----------
+   ALL datasets are declared here, up front. They are referenced across sections
+   in an order that doesn't match the render order — the Sunday-closure warning
+   lives in the resupply section but needs the water dataset. Declaring these
+   inline where they're first rendered put them in the temporal dead zone and
+   threw, silently blanking every section below. Keep them together. */
+const D          = __DATA__;
+const SEASON     = __SEASONAL__;
+const RS         = __RESUPPLY__;
+const STOPS = RS.stops, GAPS = RS.gaps;
+const BIZ        = __BUSINESSES__;
+const W          = __WATER__;
+const WP = W.points, DRY = W.dry, SUN = W.sunday;
 
 /* ---------- theme ---------- */
 const C = {ink:'#e8edf3',dim:'#94a3b3',faint:'#5e6b7a',line:'#2a323c',
@@ -470,7 +539,6 @@ document.getElementById('tb').innerHTML = D.map(d=>`
   </tr>`).join('');
 
 /* ================= SEASONAL ACCESS ================= */
-const SEASON = __SEASONAL__;
 const ST = {
   verify:  ['Verify before you go','#f08282','rgba(224,83,83,.09)','#e05353'],
   closed:  ['Closed in October','#d69a6b','rgba(201,122,60,.07)','#c97a3c'],
@@ -493,7 +561,6 @@ document.getElementById('access-list').innerHTML = SEASON.map(s=>{
 }).join('');
 
 /* ================= RESUPPLY ================= */
-const RS = __RESUPPLY__, STOPS = RS.stops, GAPS = RS.gaps;
 const TOTAL = 1210;
 const TIER_LABEL = {full:'Full',good:'Good',moderate:'Moderate',minimal:'Minimal',none:'None'};
 
@@ -512,6 +579,25 @@ document.getElementById('strip').innerHTML =
          title="Mile ${s.mile} · ${s.name} · ${TIER_LABEL[s.tier]}${off?' · '+s.off+' mi off route':''}"></div>`
       + lab;
   }).join('');
+
+/* Sunday / closed-day risk — computed against the actual start date */
+document.getElementById('sunday').innerHTML = `
+  <div class="warn" style="margin:18px 0 4px">
+    <div class="wt">Every major grocery on the Utah half closes on Sunday</div>
+    <p>Panguitch, Escalante (both stores), Blanding and Monticello all shut Sundays — this is
+       an LDS-community norm across rural Utah, and it is not mentioned in any route guide I
+       could find. In Colorado the pattern flips: <b>Wild Gal's in Naturita closes Mondays</b>
+       and doesn't open until 10am the rest of the week.
+       ${SUN.hits.length ? `<br><br><b style="color:#f08282">On a ${SUN.start} start, this
+       bites you ${SUN.hits.length===1?'once':SUN.hits.length+' times'}:</b>` : ''}</p>
+    ${SUN.hits.map(h=>`<p style="margin-top:9px;color:var(--ink)">
+       <b>${h.date} (${h.dow}) — ${h.town}, mile ${h.mile}.</b>
+       ${h.shut.join(' and ')} shut.
+       ${h.open.length ? `Still open: ${h.open.join(', ')}.`
+         : `<b style="color:#f08282">No alternative in town.</b>`}</p>`).join('')}
+    <p style="margin-top:9px">Shifting your start by a single day moves every one of these.
+       Worth doing before you book anything.</p>
+  </div>`;
 
 /* gap cards, worst first */
 const sevWord = {critical:'Critical',watch:'Plan for it',ok:''};
@@ -544,6 +630,118 @@ document.getElementById('rtb').innerHTML = STOPS.map(s=>`
     <td><span class="tag t-${s.tier}">${TIER_LABEL[s.tier]}</span></td>
     <td class="n" style="color:var(--faint)">${s.maxDays?s.maxDays:'—'}</td>
     <td style="color:var(--faint);font-size:12px">${s.services}</td>
+  </tr>`).join('');
+
+/* ================= BUSINESSES ================= */
+const CONF = {
+  verified:['Verified','t-ok','Multiple sources agree'],
+  listed:  ['Listed, unverified','t-warn','Single online listing — call to confirm'],
+  reported:['Rider reported','t-rec','Submitted by someone who was there'],
+  inferred:['Inferred','t-warn','My reasoning from context — a hypothesis'],
+  unknown: ['Unknown','t-crit2','Listed so you know it exists. Nothing more.'],
+};
+const confTag = c => `<span class="tag ${CONF[c][1]}" title="${CONF[c][2]}">${CONF[c][0]}</span>`;
+
+const byTown = {};
+BIZ.forEach(b => (byTown[b.mile+'|'+b.town] = byTown[b.mile+'|'+b.town]||[]).push(b));
+document.getElementById('bizlist').innerHTML = Object.entries(byTown).map(([k,items])=>{
+  const [mile,town] = k.split('|');
+  return `<h3 style="font-size:14px;margin:20px 0 8px">${town}
+      <span class="conf">mile ${mile}</span></h3>` +
+    items.map(b=>`
+    <div class="gapcard" style="margin-bottom:8px">
+      <div class="gaphead">
+        <span class="gaproute">${b.name}</span>
+        <span class="gapnum">${confTag(b.conf)}</span>
+      </div>
+      <p style="color:var(--dim)">
+        ${b.addr?`${b.addr}<br>`:''}
+        ${b.phone?`<a href="tel:${b.phone.replace(/[^0-9]/g,'')}" style="color:#7ec0ef;font-weight:600">${b.phone}</a> · `:''}
+        <span style="color:#e0be55">${b.hours}</span>
+        ${b.closed?` · <b style="color:#f08282">Closed ${b.closed}</b>`:''}
+        <span class="conf">listing checked ${b.checked}</span></p>
+      ${b.note?`<p style="margin-top:6px">${b.note}</p>`:''}
+      ${b.reports.map(r=>`<p style="margin-top:6px;color:#9fdcfd">▸ ${r.date} — ${r.text} <i>(${r.by})</i></p>`).join('')}
+    </div>`).join('');
+}).join('');
+
+/* ================= WATER ================= */
+const REL = {
+  tap:['Town tap','t-ok'], developed:['Agency spigot','t-ok'],
+  perennial:['Perennial','t-rec'], seasonal:['Seasonal','t-warn'],
+  intermittent:['Intermittent','t-warn'], none:['No water','t-crit2'],
+};
+
+const lowConf = WP.filter(w=>['unknown','inferred'].includes(w.conf)).length;
+const worstNorm = DRY.normal.reduce((a,b)=>b.miles>a.miles?b:a);
+const worstBad  = DRY.worst.reduce((a,b)=>b.score>a.score?b:a);
+document.getElementById('watersum').innerHTML = [
+  [WP.filter(w=>['tap','developed'].includes(w.rel)).length+' of '+WP.length,'Sources I’d rely on'],
+  [lowConf,'Low-confidence points'],
+  [worstNorm.miles+' mi','Longest dry stretch'],
+  [worstBad.miles+' mi','Worst case — '+worstBad.from],
+  ['6 L','Capacity this implies'],
+  [W.sunday.hits.length,'Closed-door risks on your dates'],
+].map(s=>`<div><div class="v">${s[0]}</div><div class="k">${s[1]}</div></div>`).join('');
+
+let wmode='normal';
+const dryChart = new Chart(document.getElementById('c3'), {
+  type:'bar',
+  data:{labels:[],datasets:[{label:'Dry stretch (mi)',data:[],borderRadius:3}]},
+  options:{ indexAxis:'y', maintainAspectRatio:false,
+    scales:{x:{grid:{color:'#20262e'},border:{color:C.line},
+               title:{display:true,text:'miles between reliable taps',color:C.faint}},
+            y:{grid:{display:false},border:{color:C.line},ticks:{font:{size:10.5}}}},
+    plugins:{legend:{display:false},
+      tooltip:{backgroundColor:'#0b0e12',borderColor:C.line,borderWidth:1,padding:11,
+        titleColor:C.ink,bodyColor:C.dim,
+        callbacks:{afterBody:(t)=>{
+          const g=DRY[wmode].slice().sort((a,b)=>b.score-a.score)[t[0].dataIndex];
+          const lines=['','Carry ~'+g.litres+' L'];
+          if(g.between.length){lines.push('','En route (do not rely on these):');
+            g.between.forEach(b=>lines.push('  · '+b.name+' ['+b.conf+']'));}
+          else lines.push('','Nothing at all in between.');
+          return lines;}}}}
+  }
+});
+function renderDry(){
+  const rows = DRY[wmode].slice().sort((a,b)=>b.score-a.score).slice(0,8);
+  dryChart.data.labels = rows.map(g=>g.from.slice(0,22)+' → '+g.to.slice(0,22));
+  dryChart.data.datasets[0].data = rows.map(g=>g.miles);
+  dryChart.data.datasets[0].backgroundColor = rows.map(g=>
+    g.severity==='critical'?'rgba(224,83,83,.75)':
+    g.severity==='watch'?'rgba(224,190,85,.65)':'rgba(125,211,252,.4)');
+  dryChart.update();
+  wNorm.classList.toggle('on',wmode==='normal');
+  wWorst.classList.toggle('on',wmode==='worst');
+
+  const nw = DRY.newInWorst;
+  document.getElementById('drynote').innerHTML = nw.length ? `
+    <div class="gapcard critical">
+      <div class="gaphead"><span class="gaproute">${nw[0].from} → ${nw[0].to}</span>
+        <span class="gapnum">${nw[0].miles} mi · carry ~${nw[0].litres} L</span></div>
+      <p><b style="color:#f08282">This stretch only appears once the Natural Bridges tap is
+      off</b> — which happens after the first hard freeze, roughly a 1-in-3 chance on the night
+      you'd arrive and rising through late October. With it working, this looks routine. With
+      it off, it is ${nw[0].miles} miles between reliable taps with
+      ${nw[0].unknown} unverified sources en route, in the most remote country on the route,
+      inside a fresh burn scar. <b>Plan for the tap being off.</b></p>
+    </div>` : '';
+}
+wNorm.onclick=()=>{wmode='normal';renderDry();};
+wWorst.onclick=()=>{wmode='worst';renderDry();};
+renderDry();
+
+document.getElementById('wtb').innerHTML = WP.map(w=>`
+  <tr>
+    <td class="n" style="color:var(--dim)">${w.mile}</td>
+    <td><span class="lm">${w.name}</span>${w.conditional?
+        `<span class="nt" style="color:#e0be55">Conditional — ${w.conditional}</span>`:''}</td>
+    <td><span class="tag ${REL[w.rel][1]}">${REL[w.rel][0]}</span></td>
+    <td>${confTag(w.conf)}</td>
+    <td style="color:var(--faint);font-size:12px">${w.treat?'Filter':'—'}</td>
+    <td style="color:var(--faint);font-size:12px;max-width:390px">${w.note||''}
+      ${w.reports.map(r=>`<span style="display:block;color:#9fdcfd;margin-top:3px">▸ ${r.date} — ${r.text} <i>(${r.by})</i></span>`).join('')}</td>
   </tr>`).join('');
 
 /* ================= PACKING ================= */

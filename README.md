@@ -37,6 +37,10 @@ open every year. Two year-specific entries (the Babylon Fire closure, and Utah's
 hunt on **17–25 Oct 2026**, which lands on the Monticello → Moab → La Sal stretch) alongside
 nine recurring seasonal windows. Every entry links to the managing agency.
 
+**Water** — 29 sources with an explicit confidence rating on every one, dry-stretch analysis,
+and a worst-case toggle. See [How confident is this?](#how-confident-is-this) — the short
+answer is *not very*, and the page says so loudly.
+
 **Packing list** — 49 items specced against the weather model, with weights and a
 critical / recommended / comfort split. Shelter and stove options are laid out against the
 actual conditions with a recommendation, rather than assumed.
@@ -65,6 +69,18 @@ That turns **Hanksville → Blanding into 110 miles with nothing** — Natural B
 food either — and it's the single carry that should size your food bags. Not the longest gap
 on the route, but comfortably the most consequential once you score for dead stops, the
 14-mile-each-way Blanding detour, and scarce water.
+
+### And nobody mentions this: rural Utah closes on Sunday
+
+**Every major grocery on the Utah half of this route is closed Sundays** — Panguitch,
+Escalante (both stores), Blanding and Monticello. It's an LDS-community norm and it appears
+in no route guide I could find. In Colorado the pattern inverts: Wild Gal's in Naturita
+closes **Mondays** and doesn't open until 10am otherwise.
+
+The site computes this against your actual start date. On an Oct 1 2026 departure it bites
+once, and badly: **Oct 11 is a Sunday and lands on Escalante** — the last good grocery for
+285 miles, with both stores shut and no alternative in town. Shifting the start by one day
+moves it.
 
 Two other things fall out of the weather data:
 
@@ -125,6 +141,68 @@ The three that most often decide whether the route goes in October:
 **Check the agency, not this page.** Every entry links to the relevant Forest Service, NPS,
 BLM or DOT source.
 
+## How confident is this?
+
+Every data point on the site carries one of these, and it's shown in the UI:
+
+| | Meaning |
+|---|---|
+| **Verified** | Multiple independent sources agree, or confirmed by the managing agency |
+| **Listed, unverified** | A single online listing. Plausible, not confirmed. |
+| **Rider reported** | Submitted by someone who was physically there |
+| **Inferred** | My reasoning from context — a hypothesis, not a fact |
+| **Unknown** | Listed so you know it exists. Nothing more. |
+
+### Water: not confident, and that matters most
+
+Town taps and agency spigots are solid. **Everything else is inference, not observation.**
+Nobody involved in building this has ridden the route, the official GPX was not obtainable,
+and the sources that matter most — Poison Spring, Hog Springs, the Elk Ridge tanks — are
+exactly the ones that can't be verified remotely. Bikepacking Roots' own guidance is *"do
+not plan on every stock tank having water."*
+
+**Treat every amber and red entry as absent until someone who was there says otherwise.**
+
+One specific trap the site models explicitly: Natural Bridges' visitor-centre tap is the only
+dependable water between Hanksville and Blanding, **and it's shut off after the first hard
+freeze** (~29% on the night you'd arrive, rising through late October). With it working the
+stretch looks routine. With it off it's 110 miles between reliable taps, two unverified
+sources en route, in the most remote country on the route, inside a fresh burn scar. The
+water chart has a toggle for exactly this.
+
+### Business hours are the weakest data here
+
+Names, addresses and phone numbers cross-check well. **Hours do not.** They come from online
+aggregators, drift seasonally, and one listing pulled during research was internally
+inconsistent. Every entry is stamped with the month it was checked and carries a phone
+number for precisely that reason. Call, don't trust.
+
+## Contributing — especially water reports
+
+This is the part that actually fixes the confidence problem, and it needs riders and locals.
+
+**[Report a water source →](../../issues/new?template=water-report.yml)** ·
+**[Correct a business →](../../issues/new?template=business-update.yml)**
+
+Negative reports are as valuable as positive ones and much rarer. "The tank was dry" is a
+genuinely useful contribution.
+
+**For maintainers** — reports flow in through the issue forms, then:
+
+1. Sanity-check the issue. Does the mile match an existing point? Does the date make sense?
+2. Append to the `reports` array in `reports.json`:
+   ```json
+   {"kind":"water", "mile":845, "date":"2026-10-15", "status":"none",
+    "text":"Both tanks bone dry, ash in the basin.", "by":"@handle"}
+   ```
+3. Run `python3 merge_reports.py`. It validates strictly — wrong mile, bad date format or
+   an invalid status is rejected with a specific reason and **nothing is rebuilt**.
+4. Commit, push, close the issue with a link.
+
+Reports **outrank** the built-in defaults. A reported point displays the reporter's status,
+is retagged "Rider reported", and shows their note and date inline. Newest wins for status;
+all reports are retained and displayed so readers can judge freshness themselves.
+
 ### Known limits
 
 - Daily positions assume ~55 mi/day from an Oct 1 start, averaged over 23 days with slower
@@ -154,9 +232,10 @@ pace, or a different route, edit the `DAYS` table at the top of `build_data.py` 
 npm install chart.js@4.4.1
 cp node_modules/chart.js/dist/chart.umd.js vendor/
 
-python3 build_data.py    # weather model → route_weather.json (prints a sanity table)
-python3 build_guide.py   # resupply + packing → resupply.json, packing.json
-python3 build_site.py    # inlines all three + Chart.js → index.html
+python3 build_data.py    # weather model      → route_weather.json
+python3 build_guide.py   # resupply + packing  → resupply.json, packing.json, seasonal.json
+python3 build_supply.py  # businesses + water  → businesses.json, water.json
+python3 build_site.py    # inlines everything + Chart.js → index.html
 ```
 
 Model parameters (lapse rates, seasonal drift, σ) are named constants near the top of
@@ -177,11 +256,17 @@ that way if you fork.
 | `index.html` | The built, self-contained page. This is what GitHub Pages serves. |
 | `build_data.py` | The weather model. Edit this to change the route or dates. |
 | `build_guide.py` | Resupply stops, gap scoring, seasonal access, and the packing list. |
+| `build_supply.py` | Business directory and water sources, with confidence on every field. |
+| `merge_reports.py` | Validates community reports and rebuilds. Run after editing `reports.json`. |
 | `build_site.py` | Inlines all data + Chart.js into `index.html`. |
 | `template.html` | Page markup and styling, with `__PLACEHOLDER__` tokens. |
 | `route_weather.json` | Weather model output, if you just want the numbers. |
 | `resupply.json` | Stops and scored carry gaps. |
 | `seasonal.json` | Access windows and closures, each with a source URL. |
+| `businesses.json` | Business directory output. |
+| `water.json` | Water points, dry stretches, and closed-day analysis. |
+| `reports.json` | **Community reports.** Edit this to add rider/local corrections. |
+| `.github/ISSUE_TEMPLATE/` | Structured report forms for water and business updates. |
 | `packing.json` | Packing list by category. |
 | `vendor/chart.umd.js` | Chart.js 4.4.1, bundled for offline use (MIT). |
 
