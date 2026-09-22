@@ -5,16 +5,6 @@ bikepacking route — 1,200 miles and ~123,000 ft of climbing from Las Vegas, NV
 
 **→ [View the chart](https://snmcbee-create.github.io/plateau-passage-weather/)**
 
-> ### ⚠ 2026 — Babylon Fire
-> **107,189 acres burned across Bears Ears, Dark Canyon and the Monticello Ranger District
-> in summer 2026** — Utah's first megafire in eight years, 95% contained in early August.
-> The closure order covered the entire **Natural Bridges → Elk Ridge → Monticello** section
-> of this route plus Canyonlands' Needles District, and was written to expire 31 Aug 2026.
-> **Burn-area closures are routinely extended, and reopening is not the same as safe.**
-> Confirm with the
-> [Manti-La Sal National Forest](https://www.fs.usda.gov/r04/manti-lasal/alerts/babylon-wildfire-closure-order)
-> before planning around this section.
-
 Most route guides give you a single "October is nice" line. This models what you'll
 actually meet, day by day, at the elevation you'll actually be sleeping at.
 
