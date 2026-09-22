@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Route questions
+    url: https://bikepackingroots.org/project/the-plateau-passage/
+    about: Bikepacking Roots created and stewards the Plateau Passage. Questions about the route itself belong with them, not here.
+  - name: Current fire and forest closures
+    url: https://www.fs.usda.gov/r04/manti-lasal/alerts
+    about: This site is a snapshot and goes stale. Check the managing agency before you plan around any closure.

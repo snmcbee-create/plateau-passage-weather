@@ -1,0 +1,76 @@
+name: Build site
+
+# Rebuilds index.html whenever the model, the data or the template changes.
+# Does not run on a schedule, deliberately: __BUILT__ is the date stamp readers
+# use to judge how stale the page is. A cron job would refresh that date every
+# month without anyone re-checking a single fact, which makes the page claim a
+# freshness it doesn't have.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'build_data.py'
+      - 'build_guide.py'
+      - 'build_supply.py'
+      - 'build_site.py'
+      - 'merge_reports.py'
+      - 'reports.json'
+      - 'template.html'
+      - 'vendor/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'build_data.py'
+      - 'build_guide.py'
+      - 'build_supply.py'
+      - 'build_site.py'
+      - 'merge_reports.py'
+      - 'reports.json'
+      - 'template.html'
+      - 'vendor/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # merge_reports.py validates reports.json and then runs build_supply.py
+      # and build_site.py itself, so build_site lands last and inlines
+      # everything. A bad report fails the job and nothing is rebuilt.
+      - name: Build
+        run: |
+          python3 build_data.py
+          python3 build_guide.py
+          python3 merge_reports.py
+
+      - name: Check the page is still self-contained
+        run: |
+          if grep -q 'src="http' index.html; then
+            echo "index.html has an external request — it must work with no signal"
+            exit 1
+          fi
+          echo "no external requests"
+
+      - name: Commit the rebuilt site
+        if: github.event_name == 'push'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html route_weather.json resupply.json packing.json \
+                  seasonal.json businesses.json water.json
+          if git diff --staged --quiet; then
+            echo "nothing changed"
+          else
+            git commit -m "Rebuild site [skip ci]"
+            git push
+          fi

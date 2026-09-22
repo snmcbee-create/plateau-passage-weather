@@ -1,0 +1,70 @@
+name: Business correction
+description: A store, cafe, post office or motel on the route that the site has wrong.
+title: "[business] mile  — "
+labels: ["business-update"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hours are the weakest data on this site. They come from online listings, they drift seasonally, and at least one was internally inconsistent when it was pulled.
+
+        If you called, or you walked in, you know more than the page does.
+
+  - type: input
+    id: mile
+    attributes:
+      label: Route mile
+      description: Must match an existing business entry. Check the business directory for the number.
+      placeholder: "620"
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Business name
+      description: Enough of it to match the entry on the site.
+      placeholder: "Escalante Outfitters"
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date you checked
+      description: YYYY-MM-DD. When you called or were there.
+      placeholder: "2026-10-11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: field
+    attributes:
+      label: What's wrong
+      multiple: true
+      options:
+        - Hours
+        - Closed day
+        - Phone number
+        - Address
+        - What they sell
+        - Permanently closed or gone
+        - Not listed at all, should be
+    validations:
+      required: true
+
+  - type: textarea
+    id: text
+    attributes:
+      label: What's actually true
+      description: The correct information, and how you know. "Called them" and "stood outside the locked door" are both good answers.
+      placeholder: "Called 2026-10-11. Winter hours since Oct 1: 9-5 Mon-Sat, closed Sunday. The site says 8-7."
+    validations:
+      required: true
+
+  - type: input
+    id: by
+    attributes:
+      label: Name or handle
+      description: Optional. Leave blank and you'll be credited as anonymous.
+      placeholder: "@handle"

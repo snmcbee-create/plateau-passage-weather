@@ -1,0 +1,74 @@
+name: Water report
+description: Tell us what you actually found at a water source. Dry counts, and is rarer.
+title: "[water] mile  — "
+labels: ["water-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You were there and the page was guessing. That makes your report better data than anything on the site.
+
+        **A dry tank is as useful as a full one.** Negative reports are the ones nobody files, and they are the ones that get people into trouble.
+
+  - type: input
+    id: mile
+    attributes:
+      label: Route mile
+      description: Must match an existing water point on the site. Check the water table for the number. If nothing on the site is near it, say so in the notes and use the closest mile.
+      placeholder: "845"
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Which source
+      description: The name as it appears on the site, or how you'd describe it.
+      placeholder: "Elk Ridge stock tank"
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date you were there
+      description: YYYY-MM-DD. The date you physically saw it, not the date you're filing this.
+      placeholder: "2026-10-15"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: What was there
+      options:
+        - "Dry or absent — nothing there (none)"
+        - "Town tap, reliable (tap)"
+        - "Agency spigot, maintained (developed)"
+        - "Flowing, looked year-round (perennial)"
+        - "Flowing, but clearly seasonal (seasonal)"
+        - "Barely there, pools or a trickle (intermittent)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: text
+    attributes:
+      label: What you found
+      description: One or two sentences. Volume, clarity, cattle, algae, whether you'd drink it after filtering, whether you'd bet your day on it next time.
+      placeholder: "Both tanks bone dry, ash in the basin from the burn. No sign of recent water."
+    validations:
+      required: true
+
+  - type: input
+    id: by
+    attributes:
+      label: Name or handle
+      description: Optional. Leave blank and you'll be credited as anonymous.
+      placeholder: "@handle"
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Optional. Conditions, the season, anything about the approach or the surrounding stretch worth knowing.
